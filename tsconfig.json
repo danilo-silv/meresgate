@@ -1,6 +1,21 @@
 {
   "extends": "expo/tsconfig.base",
   "compilerOptions": {
+    "baseUrl": "./",
+    "paths": {
+      "atoms": ["src/components/atoms"],
+      "molecules": ["src/components/molecules"],
+      "organisms": ["src/components/organisms"],
+      "templates": ["src/components/templates"],
+      "layouts": ["src/components/layouts"],
+      "contexts/*": ["src/contexts"],
+      "hooks/*": ["src/hooks"],
+      "integration/*": ["src/integration"],
+      "navigation": ["src/navigation"],
+      "screens": ["src/screens"],
+      "src/*": ["src/*"],
+      "utils": ["src/utils"]
+    },
     "strict": true
   }
 }
