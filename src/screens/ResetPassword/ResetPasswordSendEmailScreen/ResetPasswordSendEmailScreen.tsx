@@ -13,7 +13,7 @@ export const ResetPasswordSendEmailScreen: RootStackScreenComponent<'ResetPasswo
   })
 
   return (
-    <Layouts.External>
+    <Layouts.Internal typeTwo>
       <Controller
         control={control}
         rules={{
@@ -44,6 +44,6 @@ export const ResetPasswordSendEmailScreen: RootStackScreenComponent<'ResetPasswo
       <Button isLoading={sendEmailResetPasswordMutation.isLoading} mt={2} onPress={submit}>
         Redefinir senha
       </Button>
-    </Layouts.External>
+    </Layouts.Internal>
   )
 }

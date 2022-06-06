@@ -18,8 +18,6 @@ export { CreateAccountPhoneScreen } from './CreateAccount/CreateAccountPhoneScre
 
 export { CreateAccountSendEmailConfirmationScreen } from './CreateAccount/CreateAccountSendEmailConfirmationScreen'
 
-export { EntryScreen } from './EntryScreen/EntryScreen'
-
 export { LoginScreen } from './Login/LoginScreen/LoginScreen'
 
 export { LoginAuthCodeScreen } from './Login/LoginAuthCodeScreen/LoginAuthCodeScreen'

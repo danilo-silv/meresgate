@@ -47,7 +47,7 @@ export const AuthCodeScreenTemplate: FunctionComponent<AuthCodeScreenTemplatePro
   }, [resendCode])
 
   return (
-    <Layouts.External>
+    <Layouts.Internal typeTwo>
       <Controller
         control={control}
         rules={{
@@ -87,6 +87,6 @@ export const AuthCodeScreenTemplate: FunctionComponent<AuthCodeScreenTemplatePro
           Reenviar
         </Button>
       </HStack>
-    </Layouts.External>
+    </Layouts.Internal>
   )
 }

@@ -30,7 +30,7 @@ export const CreateAccountCNPJScreen: RootStackScreenComponent<'CreateAccountCNP
   )
 
   return (
-    <Layouts.External>
+    <Layouts.Internal typeTwo>
       <Controller
         control={control}
         rules={{
@@ -58,6 +58,6 @@ export const CreateAccountCNPJScreen: RootStackScreenComponent<'CreateAccountCNP
       <Button mt={2} onPress={onSubmit}>
         Confirmar CNPJ
       </Button>
-    </Layouts.External>
+    </Layouts.Internal>
   )
 }

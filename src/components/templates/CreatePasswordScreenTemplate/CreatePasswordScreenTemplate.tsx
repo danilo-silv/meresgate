@@ -61,7 +61,7 @@ export const CreatePasswordScreenTemplate: FunctionComponent<CreatePasswordScree
   )
 
   return (
-    <Layouts.External>
+    <Layouts.Internal typeTwo>
       <Controller
         control={control}
         rules={{
@@ -116,6 +116,6 @@ export const CreatePasswordScreenTemplate: FunctionComponent<CreatePasswordScree
       <Button isLoading={isSubmitting} mt={2} onPress={onSubmit} testID="confirmButton">
         Confirmar senha
       </Button>
-    </Layouts.External>
+    </Layouts.Internal>
   )
 }

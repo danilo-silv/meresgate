@@ -27,7 +27,7 @@ export const CreateAccountChangeEmailScreen: RootStackScreenComponent<
   )
 
   return (
-    <Layouts.External>
+    <Layouts.Internal typeTwo>
       <Controller
         control={control}
         rules={{
@@ -55,6 +55,6 @@ export const CreateAccountChangeEmailScreen: RootStackScreenComponent<
       <Button mt={2} onPress={onSubmit}>
         Alterar
       </Button>
-    </Layouts.External>
+    </Layouts.Internal>
   )
 }

@@ -52,7 +52,7 @@ export const CreateAccountSendEmailConfirmationScreen: RootStackScreenComponent<
   )
 
   return (
-    <Layouts.External>
+    <Layouts.Internal typeTwo>
       <Heading textAlign="center">Falta pouco</Heading>
       <Text textAlign="center">
         Um e-mail com um link de confirmação foi enviado para {route.params.email}. Acesse seu
@@ -72,6 +72,6 @@ export const CreateAccountSendEmailConfirmationScreen: RootStackScreenComponent<
       <Button onPress={goToLoginScreen} variant="outline" marginTop={100}>
         Ir para o Login
       </Button>
-    </Layouts.External>
+    </Layouts.Internal>
   )
 }

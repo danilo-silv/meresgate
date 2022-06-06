@@ -32,7 +32,7 @@ export const CreateAccountPhoneScreen: RootStackScreenComponent<'CreateAccountPh
   )
 
   return (
-    <Layouts.External>
+    <Layouts.Internal typeTwo>
       <Controller
         control={control}
         rules={{
@@ -70,6 +70,6 @@ export const CreateAccountPhoneScreen: RootStackScreenComponent<'CreateAccountPh
       <Button mt={2} onPress={onSubmit}>
         Confirmar telefone
       </Button>
-    </Layouts.External>
+    </Layouts.Internal>
   )
 }

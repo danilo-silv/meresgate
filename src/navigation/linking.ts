@@ -12,7 +12,7 @@ import { RootStackParamList } from '../types'
 export const linking: LinkingOptions<RootStackParamList> = {
   prefixes: [Linking.makeUrl('/')],
   config: {
-    initialRouteName: 'Entry',
+    initialRouteName: 'Login',
     screens: {
       Root: {
         screens: {
@@ -34,7 +34,6 @@ export const linking: LinkingOptions<RootStackParamList> = {
       ResetPasswordCreatePassword: {
         path: 'redefinir-senha/senha'
       },
-      Modal: 'modal',
       NotFound: '*'
     }
   }

@@ -28,7 +28,6 @@ declare global {
 
 export type RootStackParamList = {
   Root: NavigatorScreenParams<RootTabParamList> | undefined
-  Modal: undefined
   NotFound: undefined
   AcceptTerms: undefined
   RefuseTerms: undefined
@@ -40,7 +39,6 @@ export type RootStackParamList = {
   CreateAccountSendEmailConfirmation: Pick<CreateAccountPayload, 'email' | 'password'>
   CreateAccountChangeEmail: undefined
   CreateAccountConfirmEmail: ConfirmAccountEmailPayload
-  Entry: undefined
   Home: undefined
   Login: undefined
   LoginAuthCode: PreAuthPayload & Omit<AuthPayload, 'code'>

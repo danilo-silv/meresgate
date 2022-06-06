@@ -5,10 +5,9 @@
  */
 import { FunctionComponent, useMemo } from 'react'
 
-import { NavigationContainer, DefaultTheme, DarkTheme } from '@react-navigation/native'
+import { NavigationContainer } from '@react-navigation/native'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import { Center, Spinner } from 'native-base'
-import { ColorSchemeName } from 'react-native'
 import { AcceptTermsScreen, RefuseTermsScreen, OnboardingScreen } from 'src/screens'
 import { useAuthAtomValue } from 'src/store/auth'
 
@@ -78,8 +77,8 @@ export const RootStackNavigator: FunctionComponent = () => {
   return (
     <NavigationContainer {...{ linking }}>
       <NativeStackNavigator.Navigator
-        initialRouteName="Entry"
-        screenOptions={{ headerShown: false }}>
+        initialRouteName="Login"
+        screenOptions={{ headerShown: false, contentStyle: { backgroundColor: '#fff' } }}>
         {screens}
       </NativeStackNavigator.Navigator>
     </NavigationContainer>
