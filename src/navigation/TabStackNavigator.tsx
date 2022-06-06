@@ -2,11 +2,11 @@ import { FunctionComponent } from 'react'
 
 import { FontAwesome } from '@expo/vector-icons'
 import { createBottomTabNavigator, BottomTabScreenProps } from '@react-navigation/bottom-tabs'
-import { Icons } from 'atoms'
+import { ButtonRegisterDog, Icons } from 'atoms'
 import { MotiView } from 'moti'
 import { Pressable, useTheme } from 'native-base'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
-import { HomeScreen, ProfileScreen } from 'screens'
+import { HomeScreen, PhotoDog, ProfileScreen } from 'screens'
 
 import { RootStackScreenComponent, RootTabParamList } from '../types'
 
@@ -20,12 +20,17 @@ const tabs = [
   {
     component: HomeScreen,
     icon: Icons.Home,
-    name: 'HomeScreen'
+    name: 'Home'
+  },
+  {
+    component: PhotoDog,
+    icon: ButtonRegisterDog,
+    name: '-'
   },
   {
     component: ProfileScreen,
     icon: Icons.Profile,
-    name: 'ProfileScreen'
+    name: 'Profile'
   }
 ]
 
@@ -39,21 +44,22 @@ const TabStackNavigator: RootStackScreenComponent<'Tabs'> = () => {
       initialRouteName="HomeScreen"
       screenOptions={{
         headerShown: false,
-        tabBarActiveTintColor: theme.colors.primary[100],
-        tabBarInactiveTintColor: theme.colors.gray[100],
-        tabBarShowLabel: false,
+        tabBarActiveTintColor: theme.colors.white,
+        tabBarInactiveTintColor: theme.colors.white,
         tabBarStyle: {
-          backgroundColor: theme.colors.primary[300],
-          borderTopColor: theme.colors.primary[100],
-          borderTopWidth: 1,
-          elevation: 0,
+          backgroundColor: theme.colors.primary[400],
           height: 56 + safeAreaInsets.bottom,
-          borderTopLeftRadius: 33,
-          borderTopRightRadius: 33
+          borderTopLeftRadius: 40,
+          borderTopRightRadius: 40,
+          position: 'absolute',
+          paddingTop: 18
+        },
+        tabBarLabelStyle: {
+          fontSize: 12
         }
       }}
       sceneContainerStyle={{
-        backgroundColor: theme.colors.primary[400]
+        backgroundColor: theme.colors.primary[800]
       }}>
       {tabs.map(({ component, icon: TabIcon, name }, tabIndex) => (
         <Tab.Screen
@@ -66,7 +72,7 @@ const TabStackNavigator: RootStackScreenComponent<'Tabs'> = () => {
                 from={{ opacity: 0, scale: 0 }}
                 animate={{ opacity: 1, scale: 1 }}
                 delay={tabIndex * 50}>
-                <TabIcon {...{ color, filled: focused }} />
+                <TabIcon {...{ color, filled: focused }} size={18} />
               </MotiView>
             ),
             headerRight: () => (

@@ -1,13 +1,14 @@
+import { FunctionComponent } from 'react'
+
 import EditScreenInfo from 'components/EditScreenInfo'
 import { StatusBar } from 'expo-status-bar'
 import { Text, View } from 'native-base'
-import { RootStackScreenComponent } from 'navigation'
 import { Platform, StyleSheet } from 'react-native'
 
-export const ProfileScreen: RootStackScreenComponent<'Home'> = () => {
+export const ProfileScreen: FunctionComponent = () => {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Modal</Text>
+      <Text style={styles.title}>Profile</Text>
       <View style={styles.separator} />
       <EditScreenInfo path="/screens/ProfileScreen.tsx" />
       <Text>d</Text>
