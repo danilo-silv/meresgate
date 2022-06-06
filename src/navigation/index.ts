@@ -1,3 +1,7 @@
 export { RootStackNavigator } from './RootStackNavigator'
 
-export { RootStackScreenComponent, RootStackScreenComponentProps } from '../types'
+export {
+  RootStackScreenComponent,
+  RootStackScreenComponentProps,
+  RootTabScreenProps
+} from '../types'

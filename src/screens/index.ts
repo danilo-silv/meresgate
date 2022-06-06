@@ -20,10 +20,6 @@ export { CreateAccountSendEmailConfirmationScreen } from './CreateAccount/Create
 
 export { EntryScreen } from './EntryScreen/EntryScreen'
 
-export { HomeScreen } from './Tabs/HomeScreen/HomeScreen'
-
-export { ProfileScreen } from './Tabs/ProfileScreen/ProfileScreen'
-
 export { LoginScreen } from './Login/LoginScreen/LoginScreen'
 
 export { LoginAuthCodeScreen } from './Login/LoginAuthCodeScreen/LoginAuthCodeScreen'
@@ -39,3 +35,9 @@ export { ResetPasswordCreatePasswordScreen } from './ResetPassword/ResetPassword
 export { ResetPasswordAuthCodeScreen } from './ResetPassword/ResetPasswordAuthCodeScreen/ResetPasswordAuthCodeScreen'
 
 export { ResetPasswordSuccessfullyScreen } from './ResetPassword/ResetPasswordSuccessfullyScreen'
+
+export { HomeScreen } from './Tabs/HomeScreen/HomeScreen'
+
+export { ProfileScreen } from './Tabs/ProfileScreen/ProfileScreen'
+
+export { PhotoDog } from './Tabs/CreateDog/PhotoDog'
