@@ -1,5 +1,6 @@
 import BlueCamera from './blue-camera.png'
 import BlueHand from './blue-hand.png'
+import BlueLeftPaw from './blue-left-paw.png'
 import BluePawCamera from './blue-paw-camera.png'
 import BluePaw from './blue-paw.png'
 import Danilo from './danilo.png'
@@ -15,6 +16,7 @@ import NoBgBluePaw from './no-bg-blue-paw.png'
 import Sued from './sued.png'
 import Vaccine from './vaccine.png'
 import Victoria from './victoria.png'
+import WhitePaw from './white-paw.png'
 import WomanAndPet from './woman-and-pet.png'
 import WomanExample from './woman-example.png'
 import YellowPaw from './yellow-paw.png'
@@ -29,7 +31,9 @@ export {
   Vaccine,
   WomanExample,
   Fone,
+  WhitePaw,
   WomanAndPet,
+  BlueLeftPaw,
   BlueCamera,
   BlueHand,
   BluePawCamera,

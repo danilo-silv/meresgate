@@ -14,18 +14,25 @@ export const linking: LinkingOptions<RootStackParamList> = {
   config: {
     initialRouteName: 'Login',
     screens: {
-      Root: {
+      Tabs: {
         screens: {
           HomeScreen: {
             screens: {
-              TabOneScreen: 'one'
+              HomeScreen: 'Home'
             }
           },
           ProfileScreen: {
             screens: {
-              TabTwoScreen: 'two'
+              ProfileScreen: 'Profile'
             }
-          }
+          },
+          KnowMore: {
+            screens: {
+              KnowMore: 'knowMore'
+            }
+          },
+
+          NotFound: '*'
         }
       },
       CreateAccountConfirmEmail: {
@@ -33,8 +40,7 @@ export const linking: LinkingOptions<RootStackParamList> = {
       },
       ResetPasswordCreatePassword: {
         path: 'redefinir-senha/senha'
-      },
-      NotFound: '*'
+      }
     }
   }
 }

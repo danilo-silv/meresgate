@@ -41,3 +41,7 @@ export { HomeScreen } from './Tabs/HomeScreen/HomeScreen'
 export { ProfileScreen } from './Tabs/ProfileScreen/ProfileScreen'
 
 export { PhotoDog } from './Tabs/CreateDog/PhotoDog'
+
+export { KnowMoreScreen } from './KnowMoreScreen/KnowMoreScreen'
+
+export { NotFoundScreen } from './NotFoundScreen/NotFoundScreen'

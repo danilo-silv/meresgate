@@ -30,7 +30,7 @@ export const InternalContentLayout: FunctionComponent<Props> = memo(({ children,
       />
     </SafeAreaView>
 
-    <VStack justifyContent="center" p={5}>
+    <VStack flex={1} justifyContent="center">
       {children}
     </VStack>
   </KeyboardAvoidingView>

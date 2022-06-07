@@ -53,6 +53,7 @@ export type RootStackParamList = {
   ResetPasswordAuthCode: PreResetPasswordPayload & Pick<ResetPasswordPayload, 'slt'>
   ResetPasswordSuccessfully: undefined
   Tabs: undefined
+  KnowMore: undefined
 }
 
 export type RootStackScreenProps<Screen extends keyof RootStackParamList> = NativeStackScreenProps<
@@ -64,6 +65,8 @@ export type RootTabParamList = {
   HomeScreen: undefined
   ProfileScreen: undefined
   PhotoDog: undefined
+  KnowMore: undefined
+  NotFound: undefined
 }
 
 export type RootTabScreenProps<Screen extends keyof RootTabParamList> = CompositeScreenProps<
