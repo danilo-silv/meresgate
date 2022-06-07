@@ -29,6 +29,11 @@ export const useLoginScreen = ({
     [navigation]
   )
 
+  const goToCreateAccountFirstNameScreen = useCallback(
+    () => navigation.navigate('CreateAccountFirstName'),
+    [navigation]
+  )
+
   const setRememberEmail = useCallback((value: boolean) => {
     rememberEmailRef.current = value
   }, [])
@@ -76,6 +81,7 @@ export const useLoginScreen = ({
   return {
     control,
     goToResetPasswordSendEmailScreen,
+    goToCreateAccountFirstNameScreen,
     isLoading,
     setRememberEmail,
     submit

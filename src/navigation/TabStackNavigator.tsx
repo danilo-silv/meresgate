@@ -59,7 +59,7 @@ const TabStackNavigator: RootStackScreenComponent<'Tabs'> = () => {
         }
       }}
       sceneContainerStyle={{
-        backgroundColor: theme.colors.primary[800]
+        backgroundColor: theme.colors.white
       }}>
       {tabs.map(({ component, icon: TabIcon, name }, tabIndex) => (
         <Tab.Screen

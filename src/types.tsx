@@ -28,19 +28,21 @@ declare global {
 
 export type RootStackParamList = {
   Root: NavigatorScreenParams<RootTabParamList> | undefined
-  Modal: undefined
   NotFound: undefined
   AcceptTerms: undefined
   RefuseTerms: undefined
-  CreateAccountCNPJ: undefined
-  CreateAccountEmail: Pick<CreateAccountPayload, 'cnpj'>
-  CreateAccountPhone: Pick<CreateAccountPayload, 'cnpj' | 'email'>
-  CreateAccountCreatePassword: Pick<CreateAccountPayload, 'cnpj' | 'email' | 'phone_number_cell'>
+  CreateAccountFirstName: undefined
+  CreateAccountLastName: Pick<CreateAccountPayload, 'firstName'>
+  CreateAccountEmail: Pick<CreateAccountPayload, 'firstName' | 'firstName'>
+  CreateAccountPhone: Pick<CreateAccountPayload, 'firstName' | 'email'>
+  CreateAccountCreatePassword: Pick<
+    CreateAccountPayload,
+    'firstName' | 'email' | 'phone_number_cell'
+  >
   CreateAccountAuthCode: Omit<ConfirmAccountPhoneNumberPayload, 'code'>
   CreateAccountSendEmailConfirmation: Pick<CreateAccountPayload, 'email' | 'password'>
   CreateAccountChangeEmail: undefined
   CreateAccountConfirmEmail: ConfirmAccountEmailPayload
-  Entry: undefined
   Home: undefined
   Login: undefined
   LoginAuthCode: PreAuthPayload & Omit<AuthPayload, 'code'>

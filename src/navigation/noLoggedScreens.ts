@@ -1,5 +1,6 @@
 import {
-  CreateAccountCNPJScreen,
+  CreateAccountFirstNameScreen,
+  CreateAccountLastNameScreen,
   CreateAccountEmailScreen,
   CreateAccountPhoneScreen,
   CreateAccountCreatePasswordScreen,
@@ -7,7 +8,6 @@ import {
   CreateAccountSendEmailConfirmationScreen,
   CreateAccountChangeEmailScreen,
   CreateAccountConfirmEmailScreen,
-  EntryScreen,
   LoginScreen,
   LoginAuthCodeScreen,
   ResetPasswordEmailSentSuccessfullyScreen,
@@ -23,8 +23,9 @@ import { RootStackParamList } from '../types'
 export const noLoggedScreens: Partial<{
   [K in keyof RootStackParamList]: RootStackScreenComponent<K>
 }> = {
-  Entry: EntryScreen,
-  CreateAccountCNPJ: CreateAccountCNPJScreen,
+  Login: LoginScreen,
+  CreateAccountFirstName: CreateAccountFirstNameScreen,
+  CreateAccountLastName: CreateAccountLastNameScreen,
   CreateAccountEmail: CreateAccountEmailScreen,
   CreateAccountPhone: CreateAccountPhoneScreen,
   CreateAccountCreatePassword: CreateAccountCreatePasswordScreen,
@@ -32,7 +33,6 @@ export const noLoggedScreens: Partial<{
   CreateAccountSendEmailConfirmation: CreateAccountSendEmailConfirmationScreen,
   CreateAccountChangeEmail: CreateAccountChangeEmailScreen,
   CreateAccountConfirmEmail: CreateAccountConfirmEmailScreen,
-  Login: LoginScreen,
   LoginAuthCode: LoginAuthCodeScreen,
   ResetPasswordEmailSentSuccessfully: ResetPasswordEmailSentSuccessfullyScreen,
   ResetPasswordSendEmail: ResetPasswordSendEmailScreen,

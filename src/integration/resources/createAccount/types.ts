@@ -6,7 +6,8 @@ export type CreateAccountData = {
 }
 
 export type CreateAccountPayload = {
-  cnpj: string
+  firstName: string
+  lastName: string
   email: string
   password: string
   password_confirmation: string

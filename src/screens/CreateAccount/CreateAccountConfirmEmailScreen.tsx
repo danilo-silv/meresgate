@@ -10,11 +10,11 @@ export const CreateAccountConfirmEmailScreen: RootStackScreenComponent<
 > = ({ navigation, route }) => {
   const confirmAccountEmailMutation = useConfirmAccountEmailMutation()
 
-  const goToEntryScreen = useCallback(
+  const goToLoginScreen = useCallback(
     () =>
       navigation.reset({
         index: 0,
-        routes: [{ name: 'Entry' }]
+        routes: [{ name: 'Login' }]
       }),
     [navigation]
   )
@@ -28,7 +28,7 @@ export const CreateAccountConfirmEmailScreen: RootStackScreenComponent<
             Não foi possível fazer a validação do seu e-mail, solicite um novo e-mail de confirmação
             ou tente novamente mais tarde.
           </Text>
-          <Button onPress={goToEntryScreen}>OK</Button>
+          <Button onPress={goToLoginScreen}>OK</Button>
         </>
       )
     }
@@ -45,16 +45,16 @@ export const CreateAccountConfirmEmailScreen: RootStackScreenComponent<
             Agora o seu cadastro precisa ser aprovado para você realizar o login. Isso pode levar
             alguns dias. Aguarde um e-mail com maiores instruções.
           </Text>
-          <Button onPress={goToEntryScreen}>OK</Button>
+          <Button onPress={goToLoginScreen}>OK</Button>
         </>
       )
     }
-  }, [confirmAccountEmailMutation, goToEntryScreen])
+  }, [confirmAccountEmailMutation, goToLoginScreen])
 
   useEffect(() => {
     confirmAccountEmailMutation.mutate(route.params)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
-  return <Layouts.External>{content}</Layouts.External>
+  return <Layouts.Internal typeTwo>{content}</Layouts.Internal>
 }

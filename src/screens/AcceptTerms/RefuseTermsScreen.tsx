@@ -12,7 +12,7 @@ export const RefuseTermsScreen: RootStackScreenComponent<'RefuseTerms'> = ({ nav
   const onExit = useCallback(() => setAuthAtom(null), [setAuthAtom])
 
   return (
-    <Layouts.External>
+    <Layouts.Internal typeTwo>
       <Heading textAlign="center">
         Você recusou os termos e condições e a política de privacidade
       </Heading>
@@ -24,6 +24,6 @@ export const RefuseTermsScreen: RootStackScreenComponent<'RefuseTerms'> = ({ nav
       <Button onPress={onExit} variant="ghost">
         Sair
       </Button>
-    </Layouts.External>
+    </Layouts.Internal>
   )
 }

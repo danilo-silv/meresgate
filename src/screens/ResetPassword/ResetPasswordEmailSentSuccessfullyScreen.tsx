@@ -17,7 +17,7 @@ export const ResetPasswordEmailSentSuccessfullyScreen: RootStackScreenComponent<
   )
 
   return (
-    <Layouts.External>
+    <Layouts.Internal typeTwo>
       <Heading textAlign="center">E-mail enviado!</Heading>
       <Text textAlign="center">
         {`Verifique o seu e-mail ${route.params.email} e siga as instruções para redefinir a sua senha.\n\nNão recebeu o e-mail de redefinição da senha?`}
@@ -26,6 +26,6 @@ export const ResetPasswordEmailSentSuccessfullyScreen: RootStackScreenComponent<
       <Button onPress={goToLoginScreen} variant="ghost">
         Fazer login
       </Button>
-    </Layouts.External>
+    </Layouts.Internal>
   )
 }

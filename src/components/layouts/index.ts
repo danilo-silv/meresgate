@@ -1,3 +1,4 @@
-import { ExternalLayout as External } from './ExternalLayout'
+import { ExternalContentLayout as External } from './ExternalContentLayout'
+import { InternalContentLayout as Internal } from './InternalContentLayout'
 
-export default { External }
+export default { External, Internal }

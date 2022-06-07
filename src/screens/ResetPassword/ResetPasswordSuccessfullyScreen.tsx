@@ -17,10 +17,10 @@ export const ResetPasswordSuccessfullyScreen: RootStackScreenComponent<
   )
 
   return (
-    <Layouts.External>
+    <Layouts.Internal typeTwo>
       <Heading textAlign="center">Nova senha redefinida com sucesso</Heading>
       <Text textAlign="center">Faça o login novamente com a nova senha.</Text>
       <Button onPress={goToLoginScreen}>Ir para login</Button>
-    </Layouts.External>
+    </Layouts.Internal>
   )
 }
