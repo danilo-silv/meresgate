@@ -32,6 +32,8 @@ const styles = StyleSheet.create({
     backgroundColor: theme.colors.primary[400],
     borderBottomLeftRadius: 25,
     borderBottomRightRadius: 25,
-    paddingHorizontal: 22
+    paddingHorizontal: 22,
+    paddingTop: Platform.OS === 'android' ? 25 : 0,
+    paddingBottom: Platform.OS === 'android' ? 25 : 0
   }
 })
