@@ -18,11 +18,16 @@ import Danilo from './danilo.png'
 import Laura from './laura.png'
 import Guilherme from './guilherme.png'
 import Victoria from './victoria.png'
+import MailIconWhite from './mail-icon-white.png'
+import ManAndCat from './man-and-cat.png'
+import GreyPawUserProfile from './grey-paw-user-profile.png'
 
 export {
+    MailIconWhite,
     BluePaw,
     YellowPaw,
     GrayPaw,
+    GreyPawUserProfile,
     DogPaw,
     Dog,
     Hand,
@@ -30,6 +35,7 @@ export {
     WomanExample,
     Fone,
     WomanAndPet,
+    ManAndCat,
     BlueCamera,
     BlueHand,
     BluePawCamera,
@@ -39,5 +45,5 @@ export {
     Sued,
     Laura,
     Guilherme,
-    Victoria
+    Victoria,
 }
