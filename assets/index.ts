@@ -4,8 +4,13 @@ import BlueLeftPaw from './blue-left-paw.png'
 import BluePawCamera from './blue-paw-camera.png'
 import BluePaw from './blue-paw.png'
 import Danilo from './danilo.png'
+import DogImageFive from './dog-five.png'
+import DogImageOFour from './dog-four.png'
+import DogImageOne from './dog-one.png'
 import DogPaw from './dog-paw.png'
 import DogPhoto from './dog-photo.png'
+import DogImageThree from './dog-three.png'
+import DogImageTwo from './dog-two.png'
 import Dog from './dog.png'
 import Fone from './fone.png'
 import GrayPaw from './gray-paw.png'
@@ -24,11 +29,16 @@ import WomanExample from './woman-example.png'
 import YellowPaw from './yellow-paw.png'
 
 export {
+  DogImageOne,
+  DogImageTwo,
+  DogImageThree,
+  DogImageOFour,
+  DogImageFive,
   MailIconWhite,
   BluePaw,
   YellowPaw,
-  GrayPaw,
   BlueLeftPaw,
+  GrayPaw,
   GreyPawUserProfile,
   DogPaw,
   Dog,
