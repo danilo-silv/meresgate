@@ -1,12 +1,17 @@
-import { theme } from 'src/theme'
 import { FunctionComponent, useState } from 'react'
+
 import { View, StyleSheet, Text, TextInput, Switch, TouchableOpacity } from 'react-native'
+import { theme } from 'src/theme'
 
 export const PersonRegister: FunctionComponent = () => {
   const [isOng, setIsOng] = useState<boolean>(false)
+
   const [firstName, setFirstName] = useState<string>('')
+
   const [lastName, setLastName] = useState<string>('')
+
   const [email, setEmail] = useState<string>('')
+
   const [phoneNumber, setPhoneNumber] = useState<string>('')
 
   const toggleSwitch = () => setIsOng(!isOng)

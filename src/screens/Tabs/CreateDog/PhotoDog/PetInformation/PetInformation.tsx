@@ -1,9 +1,9 @@
-import { Button, HStack, Image, ScrollView, Text, View } from 'native-base'
 import { FunctionComponent } from 'react'
-import { theme } from 'src/theme'
-import { BluePaw, GrayPaw, YellowPaw, DogPaw, Vaccine, Dog, Hand, WomanExample } from 'assets/index'
 
+import { BluePaw, GrayPaw, YellowPaw, DogPaw, Vaccine, Dog, Hand, WomanExample } from 'assets/index'
+import { Button, HStack, Image, ScrollView, Text, View } from 'native-base'
 import { StyleSheet } from 'react-native'
+import { theme } from 'src/theme'
 
 export const PetInformation: FunctionComponent = () => {
   const pet = {
@@ -12,6 +12,7 @@ export const PetInformation: FunctionComponent = () => {
     gender: 'Macho',
     age: 2,
     weight: 8,
+    breed: false,
     isVaccinated: false,
     isRescued: false,
     rescuer: {
@@ -27,7 +28,7 @@ export const PetInformation: FunctionComponent = () => {
     <ScrollView>
       <View padding={5} mt={5}>
         <Image
-          alt={'dog paw'}
+          alt="dog paw"
           source={DogPaw}
           alignSelf="flex-end"
           top={275}
@@ -38,7 +39,7 @@ export const PetInformation: FunctionComponent = () => {
           {pet.name}
         </Text>
         <Text style={{ fontSize: 13 }}>{pet.address}</Text>
-        <View justifyContent={'space-between'} flexDirection="row" my={5}>
+        <View justifyContent="space-between" flexDirection="row" my={5}>
           <View style={styles.petInfoBoxGender}>
             <Image alt="blue paw" source={BluePaw} position="absolute" top={21} />
             <Text fontWeight={700} color={theme.colors.primary[700]}>
@@ -48,12 +49,12 @@ export const PetInformation: FunctionComponent = () => {
           </View>
           <View style={styles.petInfoBoxAge}>
             <Image alt="yellow paw" source={YellowPaw} position="absolute" top={21} />
-            <Text fontWeight={700} color={'#c1502e'}>{`${pet.age} ano(s)`}</Text>
+            <Text fontWeight={700} color="#c1502e">{`${pet.age} ano(s)`}</Text>
             <Text fontSize={14}>Idade</Text>
           </View>
           <View style={styles.petInfoBoxWeight}>
             <Image alt="gray paw" source={GrayPaw} position="absolute" top={21} />
-            <Text fontWeight={700} color={'#484f4f'}>{`${pet.weight} Kg`}</Text>
+            <Text fontWeight={700} color="#484f4f">{`${pet.weight} Kg`}</Text>
             <Text fontSize={14}>Peso</Text>
           </View>
         </View>
@@ -77,7 +78,7 @@ export const PetInformation: FunctionComponent = () => {
               </Text>
             </View>
             <Text fontSize={15} mx={5}>
-              {pet.breed ?? 'não informado'}
+              {pet.breed ? 'Vacinado' : 'Não informado'}
             </Text>
           </HStack>
           <HStack my={2}>
@@ -102,7 +103,8 @@ export const PetInformation: FunctionComponent = () => {
               borderRadius={60}
               width={60}
               height={60}
-              alt="rescuer image"></Image>
+              alt="rescuer image"
+            />
             <View mx={5}>
               <Text color="#2B748E" fontSize={16}>
                 {pet.rescuer.name}

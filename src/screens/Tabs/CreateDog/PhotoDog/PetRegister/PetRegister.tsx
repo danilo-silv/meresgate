@@ -1,26 +1,16 @@
-import {
-  Button,
-  FormControl,
-  HStack,
-  Input,
-  ScrollView,
-  Select,
-  Switch,
-  Text,
-  View
-} from 'native-base'
 import { FunctionComponent, useState } from 'react'
-import { theme } from 'src/theme'
 
+import { Button, HStack, Input, ScrollView, Select, Switch, Text, View } from 'native-base'
 import { StyleSheet } from 'react-native'
+import { theme } from 'src/theme'
 
 export const PhotoDog: FunctionComponent = () => {
   const [isVacinated, setIsVacinated] = useState<boolean>(false)
+
   const [isRescued, setIsRescued] = useState<boolean>(false)
 
-  const toggleSwitch = (switchKey: string): void => {
+  const toggleSwitch = (switchKey: string): void =>
     switchKey === 'vacinated' ? setIsVacinated(!isVacinated) : setIsRescued(!isRescued)
-  }
 
   return (
     <ScrollView>
@@ -59,11 +49,11 @@ export const PhotoDog: FunctionComponent = () => {
               placeholder="Descrição sobre o pet..."
               fontSize={13}
               style={{ textAlignVertical: 'top' }}
-              multiline={true}
+              multiline
               numberOfLines={10}
               my={2}
             />
-            <HStack justifyContent={'space-between'} alignItems={'center'}>
+            <HStack justifyContent="space-between" alignItems="center">
               <Text fontSize={14} color={theme.colors.primary[600]}>
                 Vacinado?
               </Text>
@@ -74,7 +64,7 @@ export const PhotoDog: FunctionComponent = () => {
                 value={isVacinated}
               />
             </HStack>
-            <HStack justifyContent={'space-between'} alignItems={'center'}>
+            <HStack justifyContent="space-between" alignItems="center">
               <Text fontSize={14} color={theme.colors.primary[600]}>
                 Resgatado?
               </Text>

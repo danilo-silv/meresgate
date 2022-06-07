@@ -1,5 +1,5 @@
-import { HStack, Image, ScrollView, Text, theme, View } from 'native-base'
 import { FunctionComponent } from 'react'
+
 import {
   BlueCamera,
   BlueHand,
@@ -13,7 +13,7 @@ import {
   Victoria,
   WomanAndPet
 } from 'assets'
-
+import { HStack, Image, ScrollView, Text, theme, View } from 'native-base'
 import { StyleSheet } from 'react-native'
 
 const devs = [
@@ -114,7 +114,7 @@ export const PhotoDog: FunctionComponent = () => {
         <Text color="white" fontWeight="700" fontSize={20}>
           Em caso de dúvidas, acesse as redes sociais dos desenvolvedores!
         </Text>
-        <HStack space={1} justifyContent="space-between" flexWrap={'wrap'} py={10}>
+        <HStack space={1} justifyContent="space-between" flexWrap="wrap" py={10}>
           {devs.map((dev) => {
             return (
               <View width={100} pt={5} flex={1} alignItems="center">
