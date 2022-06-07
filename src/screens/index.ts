@@ -6,11 +6,13 @@ export { CreateAccountAuthCodeScreen } from './CreateAccount/CreateAccountAuthCo
 
 export { CreateAccountChangeEmailScreen } from './CreateAccount/CreateAccountChangeEmailScreen'
 
-export { CreateAccountCNPJScreen } from './CreateAccount/CreateAccountCNPJScreen'
-
 export { CreateAccountConfirmEmailScreen } from './CreateAccount/CreateAccountConfirmEmailScreen'
 
 export { CreateAccountCreatePasswordScreen } from './CreateAccount/CreateAccountCreatePasswordScreen'
+
+export { CreateAccountFirstNameScreen } from './CreateAccount/CreateAccountFirstNameScreen'
+
+export { CreateAccountLastNameScreen } from './CreateAccount/CreateAccountLastNameScreen'
 
 export { CreateAccountEmailScreen } from './CreateAccount/CreateAccountEmailScreen'
 

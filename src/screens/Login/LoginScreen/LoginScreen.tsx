@@ -9,8 +9,14 @@ import { TouchableOpacity } from 'react-native-gesture-handler'
 import { handleInputPasswordFocus, refInputPassword, useLoginScreen } from './useLoginScreen'
 
 export const LoginScreen: RootStackScreenComponent<'Login'> = ({ navigation }) => {
-  const { control, goToResetPasswordSendEmailScreen, isLoading, setRememberEmail, submit } =
-    useLoginScreen({ navigation })
+  const {
+    control,
+    goToResetPasswordSendEmailScreen,
+    isLoading,
+    setRememberEmail,
+    submit,
+    goToCreateAccountFirstNameScreen
+  } = useLoginScreen({ navigation })
 
   return (
     <ScrollView showsVerticalScrollIndicator={false}>
@@ -100,7 +106,7 @@ export const LoginScreen: RootStackScreenComponent<'Login'> = ({ navigation }) =
         </HStack>
 
         <Box pl="100" pr="100">
-          <HStack alignItems="center" justifyContent="space-around" mb={50}>
+          <HStack alignItems="center" justifyContent="space-around" mb={22}>
             {Platform.OS === 'android' && (
               <TouchableOpacity style={styles.socialButton}>
                 <Icons.Google size={30} />
@@ -116,6 +122,13 @@ export const LoginScreen: RootStackScreenComponent<'Login'> = ({ navigation }) =
             </TouchableOpacity>
           </HStack>
         </Box>
+
+        <HStack alignItems="center" justifyContent="center">
+          <Text fontSize={12}>Ainda não é registrado? </Text>
+          <Button onPress={goToCreateAccountFirstNameScreen} variant="link" size="sm">
+            Criar conta
+          </Button>
+        </HStack>
       </Layouts.Internal>
     </ScrollView>
   )

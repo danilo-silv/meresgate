@@ -1,7 +1,7 @@
 import { createRef, FunctionComponent, useCallback, useMemo } from 'react'
 
 import Layouts from 'layouts'
-import { Button, FormControl, Heading, Input, Text } from 'native-base'
+import { Button, Center, FormControl, Input, ScrollView, Text, VStack } from 'native-base'
 import { Controller, SubmitHandler, useForm } from 'react-hook-form'
 import { Keyboard, TextInput } from 'react-native'
 import { validatePassword } from 'src/utils/validators'
@@ -61,61 +61,91 @@ export const CreatePasswordScreenTemplate: FunctionComponent<CreatePasswordScree
   )
 
   return (
-    <Layouts.Internal typeTwo>
-      <Controller
-        control={control}
-        rules={{
-          required: 'Digite sua senha'
-        }}
-        render={({ field: { onChange: onChangeText, onBlur, value }, formState: { errors } }) => (
-          <FormControl isInvalid={!!errors.password} isRequired>
-            <Heading>Escolha uma senha</Heading>
-            <Input
-              {...{ onChangeText, onBlur, value }}
-              enablesReturnKeyAutomatically
-              onSubmitEditing={focusOnConfirmPasswordInput}
-              returnKeyType="next"
-              type="password"
-              testID="inputPassword"
+    <ScrollView showsVerticalScrollIndicator={false}>
+      <Layouts.Internal typeTwo>
+        <VStack space={10} alignItems="center" justifyContent="space-around">
+          <Center alignItems="center" justifyContent="center" mt={6} mb={6}>
+            <Text fontSize={14} color="#2B748E" bold>
+              Vamos criar a sua conta! Insira o dado abaixo:
+            </Text>
+          </Center>
+          <Center w="100%" alignItems="center" justifyContent="center">
+            <Controller
+              control={control}
+              rules={{
+                required: 'Digite sua senha'
+              }}
+              render={({
+                field: { onChange: onChangeText, onBlur, value },
+                formState: { errors }
+              }) => (
+                <FormControl isInvalid={!!errors.password} isRequired>
+                  <Text fontSize={20}>Escolha uma senha</Text>
+                  <Input
+                    {...{ onChangeText, onBlur, value }}
+                    enablesReturnKeyAutomatically
+                    onSubmitEditing={focusOnConfirmPasswordInput}
+                    returnKeyType="next"
+                    type="password"
+                    testID="inputPassword"
+                    style={{ backgroundColor: 'white', opacity: 0.9, fontSize: 15, height: 51 }}
+                  />
+                  {errors.password && (
+                    <FormControl.ErrorMessage>{errors.password.message}</FormControl.ErrorMessage>
+                  )}
+                  {passwordRules}
+                </FormControl>
+              )}
+              name="password"
             />
-            {errors.password && (
-              <FormControl.ErrorMessage>{errors.password.message}</FormControl.ErrorMessage>
-            )}
-            {passwordRules}
-          </FormControl>
-        )}
-        name="password"
-      />
-      <Controller
-        control={control}
-        rules={{
-          required: 'Digite sua senha',
-          validate: (value) => value === passwordValue || 'As senhas são diferentes'
-        }}
-        render={({ field: { onChange: onChangeText, onBlur, value }, formState: { errors } }) => (
-          <FormControl isInvalid={!!errors.password_confirmation} isRequired>
-            <Heading>Confirme a senha</Heading>
-            <Input
-              {...{ onChangeText, onBlur, value }}
-              enablesReturnKeyAutomatically
-              onSubmitEditing={onSubmit}
-              returnKeyType="next"
-              ref={confirmPasswordInputRef}
-              type="password"
-              testID="inputConfirmPassword"
+          </Center>
+          <Center w="100%" alignItems="center" justifyContent="center">
+            <Controller
+              control={control}
+              rules={{
+                required: 'Digite sua senha',
+                validate: (value) => value === passwordValue || 'As senhas são diferentes'
+              }}
+              render={({
+                field: { onChange: onChangeText, onBlur, value },
+                formState: { errors }
+              }) => (
+                <FormControl isInvalid={!!errors.password_confirmation} isRequired>
+                  <Text fontSize={20}>Confirme a senha</Text>
+                  <Input
+                    {...{ onChangeText, onBlur, value }}
+                    enablesReturnKeyAutomatically
+                    onSubmitEditing={onSubmit}
+                    returnKeyType="next"
+                    ref={confirmPasswordInputRef}
+                    type="password"
+                    testID="inputConfirmPassword"
+                    style={{ backgroundColor: 'white', opacity: 0.9, fontSize: 15, height: 51 }}
+                  />
+                  {errors.password_confirmation && (
+                    <FormControl.ErrorMessage>
+                      {errors.password_confirmation.message}
+                    </FormControl.ErrorMessage>
+                  )}
+                </FormControl>
+              )}
+              name="password_confirmation"
             />
-            {errors.password_confirmation && (
-              <FormControl.ErrorMessage>
-                {errors.password_confirmation.message}
-              </FormControl.ErrorMessage>
-            )}
-          </FormControl>
-        )}
-        name="password_confirmation"
-      />
-      <Button isLoading={isSubmitting} mt={2} onPress={onSubmit} testID="confirmButton">
-        Confirmar senha
-      </Button>
-    </Layouts.Internal>
+          </Center>
+          <Center w="100%">
+            <Button
+              isLoading={isSubmitting}
+              mt={2}
+              onPress={onSubmit}
+              testID="confirmButton"
+              style={{ backgroundColor: '#2B748E', width: '100%' }}>
+              <Text fontSize={12} color="white" bold>
+                Confirmar senha
+              </Text>
+            </Button>
+          </Center>
+        </VStack>
+      </Layouts.Internal>
+    </ScrollView>
   )
 }

@@ -1,5 +1,6 @@
 import {
-  CreateAccountCNPJScreen,
+  CreateAccountFirstNameScreen,
+  CreateAccountLastNameScreen,
   CreateAccountEmailScreen,
   CreateAccountPhoneScreen,
   CreateAccountCreatePasswordScreen,
@@ -23,7 +24,8 @@ export const noLoggedScreens: Partial<{
   [K in keyof RootStackParamList]: RootStackScreenComponent<K>
 }> = {
   Login: LoginScreen,
-  CreateAccountCNPJ: CreateAccountCNPJScreen,
+  CreateAccountFirstName: CreateAccountFirstNameScreen,
+  CreateAccountLastName: CreateAccountLastNameScreen,
   CreateAccountEmail: CreateAccountEmailScreen,
   CreateAccountPhone: CreateAccountPhoneScreen,
   CreateAccountCreatePassword: CreateAccountCreatePasswordScreen,

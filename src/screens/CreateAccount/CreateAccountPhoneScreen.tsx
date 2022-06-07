@@ -1,7 +1,7 @@
 import { useCallback } from 'react'
 
 import Layouts from 'layouts'
-import { Button, FormControl, Heading, Input } from 'native-base'
+import { Button, Center, FormControl, Input, Text, VStack } from 'native-base'
 import { RootStackScreenComponent } from 'navigation'
 import { Controller, SubmitHandler, useForm } from 'react-hook-form'
 import { Keyboard } from 'react-native'
@@ -33,43 +33,60 @@ export const CreateAccountPhoneScreen: RootStackScreenComponent<'CreateAccountPh
 
   return (
     <Layouts.Internal typeTwo>
-      <Controller
-        control={control}
-        rules={{
-          required: 'Digite seu telefone',
-          validate: validatePhone
-        }}
-        render={({ field: { onChange: onChangeText, onBlur, value }, formState: { errors } }) => (
-          <FormControl isInvalid={!!errors.phone_number_cell} isRequired>
-            <Heading>Digite seu telefone</Heading>
-            <Input
-              {...{
-                onChangeText,
-                onBlur,
-                value: MaskService.toMask('cel-phone', value || '', {
-                  maskType: 'BRL',
-                  withDDD: true,
-                  dddMask: '+55 (99) '
-                })
-              }}
-              enablesReturnKeyAutomatically
-              keyboardType="phone-pad"
-              maxLength={19}
-              onSubmitEditing={onSubmit}
-              returnKeyType="next"
-            />
-            {errors.phone_number_cell && (
-              <FormControl.ErrorMessage>
-                {errors.phone_number_cell.message}
-              </FormControl.ErrorMessage>
+      <VStack space={40} alignItems="center" justifyContent="space-around">
+        <Center alignItems="center" justifyContent="center" mt={6} mb={6}>
+          <Text fontSize={14} color="#2B748E" bold>
+            Vamos criar a sua conta! Insira o dado abaixo:
+          </Text>
+        </Center>
+        <Center w="100%" alignItems="center" justifyContent="center">
+          <Controller
+            control={control}
+            rules={{
+              required: 'Digite o Número de celular',
+              validate: validatePhone
+            }}
+            render={({
+              field: { onChange: onChangeText, onBlur, value },
+              formState: { errors }
+            }) => (
+              <FormControl isInvalid={!!errors.phone_number_cell} isRequired>
+                <Input
+                  {...{
+                    onChangeText,
+                    onBlur,
+                    value: MaskService.toMask('cel-phone', value || '', {
+                      maskType: 'BRL',
+                      withDDD: true,
+                      dddMask: '+55 (99) '
+                    })
+                  }}
+                  placeholder="Número de celular"
+                  enablesReturnKeyAutomatically
+                  keyboardType="phone-pad"
+                  maxLength={19}
+                  onSubmitEditing={onSubmit}
+                  returnKeyType="next"
+                  style={{ backgroundColor: 'white', opacity: 0.9, fontSize: 15, height: 51 }}
+                />
+                {errors.phone_number_cell && (
+                  <FormControl.ErrorMessage>
+                    {errors.phone_number_cell.message}
+                  </FormControl.ErrorMessage>
+                )}
+              </FormControl>
             )}
-          </FormControl>
-        )}
-        name="phone_number_cell"
-      />
-      <Button mt={2} onPress={onSubmit}>
-        Confirmar telefone
-      </Button>
+            name="phone_number_cell"
+          />
+        </Center>
+        <Center w="100%">
+          <Button mt={2} onPress={onSubmit} style={{ backgroundColor: '#2B748E', width: '100%' }}>
+            <Text fontSize={12} color="white" bold>
+              Confirmar Telefone
+            </Text>
+          </Button>
+        </Center>
+      </VStack>
     </Layouts.Internal>
   )
 }

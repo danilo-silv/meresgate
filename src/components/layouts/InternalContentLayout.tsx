@@ -15,8 +15,19 @@ interface Props {
 
 export const InternalContentLayout: FunctionComponent<Props> = memo(({ children, typeTwo }) => (
   <KeyboardAvoidingView {...(Platform.OS === 'android' ? {} : { behavior: 'padding' })} flex={1}>
-    <SafeAreaView style={styles.container}>
-      <Image source={typeTwo ? LogoTwo : LogoOne} resizeMode="contain" alt="LogoOne" />
+    <SafeAreaView
+      style={{
+        ...styles.container,
+        paddingTop: Platform.OS === 'android' && !typeTwo ? 1 : 25,
+        paddingBottom: Platform.OS === 'android' ? 18 : 0
+      }}>
+      <Image
+        source={typeTwo ? LogoTwo : LogoOne}
+        resizeMode="contain"
+        alt="LogoOne"
+        width={300}
+        height={!typeTwo ? 200 : 90}
+      />
     </SafeAreaView>
 
     <VStack justifyContent="center" p={5}>
@@ -32,8 +43,6 @@ const styles = StyleSheet.create({
     backgroundColor: theme.colors.primary[400],
     borderBottomLeftRadius: 25,
     borderBottomRightRadius: 25,
-    paddingHorizontal: 22,
-    paddingTop: Platform.OS === 'android' ? 25 : 0,
-    paddingBottom: Platform.OS === 'android' ? 25 : 0
+    paddingHorizontal: 22
   }
 })
