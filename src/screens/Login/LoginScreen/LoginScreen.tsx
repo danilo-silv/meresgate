@@ -70,7 +70,7 @@ export const LoginScreen: RootStackScreenComponent<'Login'> = ({ navigation }) =
           <Switch
             size={Platform.OS === 'ios' ? 'sm' : 'md'}
             trackColor={{ false: '#767577', true: theme.colors.primary[100] }}
-            thumbColor={theme.colors.primary[600]}
+            thumbColor={theme.colors.primary[900]}
             defaultIsChecked
             onValueChange={setRememberEmail}
           />

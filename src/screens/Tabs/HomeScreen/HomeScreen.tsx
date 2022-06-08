@@ -1,20 +1,98 @@
-import { useCallback } from 'react'
+import { useCallback, useState } from 'react'
 
-import { Button, Center, Text } from 'native-base'
+import Layouts from 'layouts'
+import { MotiView } from 'moti'
+import { Button, HStack, ScrollView, Text, theme, View } from 'native-base'
+import { StyleSheet } from 'react-native'
 import { RootStackScreenProps } from 'src/types'
 
-import { useSetAuthAtom } from '../../../store/auth'
+import { AbandonedPets } from './AbandonedPets'
+import { PetsForAdoption } from './PetsForAdoption'
 
 export const HomeScreen = ({ navigation }: RootStackScreenProps<'Home'>) => {
-  const setAuthAtom = useSetAuthAtom()
+  const [step, setStep] = useState<number>(1)
 
-  const goToKnowMore = useCallback(() => navigation.navigate('KnowMore'), [navigation])
+  // const goToKnowMore = useCallback(() => navigation.navigate('KnowMore'), [navigation])
+
+  const handleSetStep = useCallback((step) => setStep(step), [])
 
   return (
-    <Center flex={1}>
-      <Text>Home</Text>
-      <Button onPress={() => setAuthAtom(null)}>Logout</Button>
-      <Button onPress={goToKnowMore}>Siba Mais</Button>
-    </Center>
+    <ScrollView showsVerticalScrollIndicator={false}>
+      <Layouts.Internal typeTwo>
+        <HStack alignItems="center" justifyContent="space-around">
+          <View>
+            <Button
+              onPress={() => handleSetStep(1)}
+              style={styles.button}
+              borderColor={step === 1 ? theme.colors.primary[400] : 'transparent'}>
+              <Text style={styles.text} color={theme.colors.white}>
+                Animais
+              </Text>
+              <Text style={styles.text}>Abandonas</Text>
+            </Button>
+          </View>
+          <View>
+            <Button
+              onPress={() => handleSetStep(2)}
+              style={styles.button}
+              borderColor={step === 2 ? theme.colors.primary[400] : 'transparent'}>
+              <Text style={styles.text}>Animais</Text>
+              <Text style={styles.text}>Para Adoção</Text>
+            </Button>
+          </View>
+        </HStack>
+
+        {step === 1 && (
+          <MotiView
+            from={{
+              opacity: 0,
+              scale: 0.9
+            }}
+            animate={{
+              opacity: 1,
+              scale: 1
+            }}
+            exit={{
+              opacity: 0,
+              scale: 0.9
+            }}>
+            <AbandonedPets />
+          </MotiView>
+        )}
+        {step === 2 && (
+          <MotiView
+            from={{
+              opacity: 0,
+              scale: 0.9
+            }}
+            animate={{
+              opacity: 1,
+              scale: 1
+            }}
+            exit={{
+              opacity: 0,
+              scale: 0.9
+            }}>
+            <PetsForAdoption />
+          </MotiView>
+        )}
+      </Layouts.Internal>
+    </ScrollView>
   )
 }
+
+const styles = StyleSheet.create({
+  text: {
+    color: theme.colors.primary[900],
+    fontSize: 14,
+    fontWeight: '700',
+    lineHeight: 21,
+    textAlign: 'center'
+  },
+  button: {
+    width: 129,
+    backgroundColor: theme.colors.white,
+    borderRadius: 0,
+    borderBottomWidth: 2
+  }
+})

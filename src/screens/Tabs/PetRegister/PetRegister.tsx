@@ -32,7 +32,7 @@ export const PetRegister: FunctionComponent = () => {
           <Text style={styles.createAccountText}>
             Preencha o máximo de dados a respeito do pet encontrado..
           </Text>
-          <Text fontSize={15} color={theme.colors.primary[600]} my={2}>
+          <Text fontSize={15} color={theme.colors.primary[900]} my={2}>
             Informações de endereço:
           </Text>
 
@@ -67,7 +67,7 @@ export const PetRegister: FunctionComponent = () => {
               style={{ backgroundColor: 'white', opacity: 0.9, fontSize: 15, height: 51 }}
               my={2}
             />
-            <Text fontSize={15} color={theme.colors.primary[600]} mt={5}>
+            <Text fontSize={15} color={theme.colors.primary[900]} mt={5}>
               Informações do pet:
             </Text>
             <Input
@@ -106,7 +106,7 @@ export const PetRegister: FunctionComponent = () => {
             </Box>
 
             <HStack justifyContent="space-between" alignItems="center">
-              <Text fontSize={14} color={theme.colors.primary[600]}>
+              <Text fontSize={14} color={theme.colors.primary[900]}>
                 Vacinado?
               </Text>
               <Switch
@@ -118,7 +118,7 @@ export const PetRegister: FunctionComponent = () => {
               />
             </HStack>
             <HStack justifyContent="space-between" alignItems="center">
-              <Text fontSize={14} color={theme.colors.primary[600]}>
+              <Text fontSize={14} color={theme.colors.primary[900]}>
                 Resgatado?
               </Text>
               <Switch

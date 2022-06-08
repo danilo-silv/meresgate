@@ -27,6 +27,7 @@ import OngSOSImage from './ong-sos.png'
 import Sued from './sued.png'
 import Vaccine from './vaccine.png'
 import Victoria from './victoria.png'
+import WhitePaw from './white-paw.png'
 import WomanAndPet from './woman-and-pet.png'
 import WomanExample from './woman-example.png'
 import YellowPaw from './yellow-paw.png'
@@ -44,6 +45,7 @@ export {
   BluePaw,
   BlueLeftPaw,
   YellowPaw,
+  WhitePaw,
   GrayPaw,
   GreyPawUserProfile,
   DogPaw,
