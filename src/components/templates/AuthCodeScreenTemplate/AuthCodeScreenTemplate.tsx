@@ -51,7 +51,7 @@ export const AuthCodeScreenTemplate: FunctionComponent<AuthCodeScreenTemplatePro
       <VStack space={20} alignItems="center" justifyContent="space-around">
         <Center alignItems="center" justifyContent="center" mt={6} mb={6}>
           <Text fontSize={14} color="#2B748E" bold>
-            Vamos criar a sua conta! Insira o dado abaixo:
+            Confirme o seu número de contato através da autenticação abaixo:
           </Text>
         </Center>
         <Center w="100%" alignItems="center" justifyContent="center">
@@ -70,7 +70,7 @@ export const AuthCodeScreenTemplate: FunctionComponent<AuthCodeScreenTemplatePro
                   Autenticação
                 </Text>
                 <Text mb={4} mt={4}>
-                  Enviamos por sms o código de 6 dígitos. Digite abaixo o código.
+                  Enviamos por sms um código de 6 dígitos. Digite-o abaixo:
                 </Text>
                 <Input
                   {...{ onChangeText, onBlur, value }}
