@@ -1,5 +1,5 @@
 import { FunctionComponent } from 'react'
-import { Fontisto, MaterialCommunityIcons, Entypo } from '@expo/vector-icons'
+import { Entypo, Ionicons, FontAwesome5 } from '@expo/vector-icons'
 import { Button, HStack, Image, ScrollView, Text, theme, View, VStack } from 'native-base'
 
 import { DogImageOne, DogImageThree, DogImageTwo, WomanAndPet } from 'assets'
@@ -46,57 +46,54 @@ export const PhotoDog: FunctionComponent = () => {
                   marginHorizontal: 5,
                   marginVertical: 5,
                   borderRadius: 20,
-                  backgroundColor: 'rgba(0, 183, 255, 0.1)',
-                  width: '47%',
+                  backgroundColor: 'rgba(0, 183, 255, 0.04)',
                   paddingHorizontal: 10,
                   paddingVertical: 10,
                   borderWidth: 2,
                   borderColor: theme.colors.primary[200]
                 }}>
-                <Text color={theme.colors.primary[700]} fontSize={19} fontWeight="bold">
+                <Text
+                  color={theme.colors.primary[700]}
+                  fontSize={16}
+                  fontWeight="bold"
+                  mb={3}
+                  maxW={40}
+                  textAlign="center">
                   {pet.name}
                 </Text>
                 <VStack alignItems="center">
-                  <Text fontSize={15} color={theme.colors.primary[500]}>
+                  <HStack fontSize={15} color={theme.colors.primary[500]} justifyContent="center">
                     {pet.gender === 'm' ? (
                       <>
-                        <MaterialCommunityIcons
-                          name="gender-male"
-                          size={20}
-                          color="black"
-                          color={theme.colors.primary[700]}
-                        />
-                        Macho
+                        <Ionicons name="male" size={15} color={theme.colors.primary[700]} />
+                        <Text ml={2} color={theme.colors.primary[700]}>
+                          Macho
+                        </Text>
                       </>
                     ) : (
                       <>
-                        <MaterialCommunityIcons
-                          name="gender-female"
-                          size={20}
-                          color="black"
-                          color={theme.colors.primary[700]}
-                        />
-                        Fêmea
+                        <Ionicons name="female" size={15} color={theme.colors.primary[700]} />
+                        <Text ml={2} color={theme.colors.primary[700]}>
+                          Fêmea
+                        </Text>
                       </>
                     )}
-                  </Text>
-                  <Text fontSize={15} color={theme.colors.primary[500]}>
-                    <Fontisto
-                      name="injection-syringe"
-                      size={15}
-                      color={theme.colors.primary[700]}
-                    />
-                    {pet.isVaccinated ? 'Vacinado' : 'Não vacinado'}
-                  </Text>
+                  </HStack>
+                  <HStack fontSize={15} color={theme.colors.primary[500]}>
+                    <FontAwesome5 name="syringe" size={15} color={theme.colors.primary[700]} />
+                    <Text ml={2} color={theme.colors.primary[700]}>
+                      {pet.isVaccinated ? 'Vacinado' : 'Não vacinado'}
+                    </Text>
+                  </HStack>
                 </VStack>
                 <View alignItems="center">
                   <Image
                     source={pet.image}
-                    borderRadius={75}
                     alt="dog image"
                     height={32}
                     mt={2}
                     w={32}
+                    borderRadius={70}
                   />
                 </View>
               </TouchableOpacity>
