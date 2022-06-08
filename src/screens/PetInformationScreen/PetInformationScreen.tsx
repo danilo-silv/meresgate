@@ -30,7 +30,7 @@ export const PetInformationScreen: FunctionComponent = () => {
     <ScrollView showsVerticalScrollIndicator={false}>
       <Layouts.External>
         <VStack backgroundColor={theme.colors.primary[400]}>
-          <View paddingBottom={150} padding={5} mt={5} style={styles.container}>
+          <View padding={5} mt={5} style={styles.container}>
             <Avatar
               bg="#ccc"
               alignSelf="center"
