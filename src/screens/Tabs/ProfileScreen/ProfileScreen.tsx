@@ -1,10 +1,11 @@
-import { FunctionComponent } from 'react'
+import { FunctionComponent, useCallback } from 'react'
 
-import { AntDesign, Ionicons, MaterialIcons, Zocial } from '@expo/vector-icons'
-import { GreyPawUserProfile, ManAndCat } from 'assets'
+import { AntDesign, MaterialIcons } from '@expo/vector-icons'
+import { GreyPawUserProfile, Laura, ManAndCat } from 'assets'
 import Layouts from 'layouts'
 import { Avatar, HStack, Image, ScrollView, Text, View, VStack } from 'native-base'
 import { StyleSheet, TouchableOpacity } from 'react-native'
+import { useSetAuthAtom } from 'src/store/auth'
 import { theme } from 'src/theme'
 
 type person = {
@@ -15,6 +16,10 @@ type person = {
 }
 
 export const ProfileScreen: FunctionComponent = () => {
+  const setAuthAtom = useSetAuthAtom()
+
+  const onExit = useCallback(() => setAuthAtom(null), [setAuthAtom])
+
   const person: person = {
     name: 'Laura Nibrali',
     email: 'lauranibrali@gmail.com',
@@ -30,19 +35,16 @@ export const ProfileScreen: FunctionComponent = () => {
             <Avatar
               bg="#ccc"
               alignSelf="center"
-              size={230}
-              source={{
-                uri: 'https://images.unsplash.com/photo-1510771463146-e89e6e86560e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=627&q=80'
-              }}
+              size={116}
+              source={Laura}
               style={{
-                borderWidth: 10,
-                borderColor: theme.colors.white,
                 position: 'absolute',
-                top: -100
+                top: -60,
+                right: 20
               }}
             />
             <Image alt="grey paw" source={GreyPawUserProfile} position="absolute" left={-50} />
-            <View mt={140}>
+            <View mt={81}>
               <Text fontSize={27} fontWeight={700} color="#03063A" alignSelf="flex-end">
                 {person.name}
               </Text>
@@ -81,6 +83,26 @@ export const ProfileScreen: FunctionComponent = () => {
                     <MaterialIcons name="call" size={24} color="white" />
                   </TouchableOpacity>
                 </HStack>
+                <HStack height={10} mt={8} alignItems="center" justifyContent="flex-end">
+                  <TouchableOpacity onPress={onExit}>
+                    <HStack alignItems="center" justifyContent="center">
+                      <Text color="#2B748E" fontSize={15}>
+                        Sair
+                      </Text>
+                      <MaterialIcons
+                        name="logout"
+                        size={24}
+                        color="white"
+                        style={{
+                          backgroundColor: '#2B748E',
+                          marginLeft: 15,
+                          borderRadius: 7,
+                          padding: 2
+                        }}
+                      />
+                    </HStack>
+                  </TouchableOpacity>
+                </HStack>
               </View>
               <View>
                 <Image
@@ -88,7 +110,7 @@ export const ProfileScreen: FunctionComponent = () => {
                   alt="a man with a cat"
                   position="absolute"
                   left={-55}
-                  top={-60}
+                  top={-150}
                 />
                 <View>
                   <Text

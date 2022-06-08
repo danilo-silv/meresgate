@@ -100,7 +100,8 @@ export const AuthCodeScreenTemplate: FunctionComponent<AuthCodeScreenTemplatePro
         <Center w="100%">
           <Button
             isLoading={isSubmitting}
-            mt={2}
+            mt={10}
+            mb={10}
             onPress={onSubmit}
             testID="confirmButton"
             style={{ backgroundColor: '#2B748E', width: '100%' }}>
