@@ -36,7 +36,7 @@ export const CreateAccountFirstNameScreen: RootStackScreenComponent<'CreateAccou
       <VStack space={75} alignItems="center" justifyContent="space-around">
         <Center alignItems="center" justifyContent="center" mt={6} mb={6}>
           <Text fontSize={14} color="#2B748E" bold>
-            Vamos criar a sua conta! Insira o dado abaixo:
+            Vamos criar a sua conta! Insira o seu primeiro nome:
           </Text>
         </Center>
         <Center w="100%" alignItems="center" justifyContent="center">

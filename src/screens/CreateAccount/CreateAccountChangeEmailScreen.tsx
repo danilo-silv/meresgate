@@ -31,7 +31,7 @@ export const CreateAccountChangeEmailScreen: RootStackScreenComponent<
       <VStack space={20} alignItems="center" justifyContent="space-around">
         <Center alignItems="center" justifyContent="center" mt={6} mb={6}>
           <Text fontSize={14} color="#2B748E" bold>
-            Informe um novo email e logo após, verifique sua caixa de entrada!
+            Informe um novo e-mail e logo após, verifique sua caixa de entrada!
           </Text>
         </Center>
         <Center w="100%" alignItems="center" justifyContent="center">

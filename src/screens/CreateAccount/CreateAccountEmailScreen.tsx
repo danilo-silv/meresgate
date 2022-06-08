@@ -31,7 +31,7 @@ export const CreateAccountEmailScreen: RootStackScreenComponent<'CreateAccountEm
       <VStack space={40} alignItems="center" justifyContent="space-around">
         <Center alignItems="center" justifyContent="center" mt={6} mb={6}>
           <Text fontSize={14} color="#2B748E" bold>
-            Vamos criar a sua conta! Insira o dado abaixo:
+            Agora, você deve adicionar o seu e-mail:
           </Text>
         </Center>
         <Center w="100%" alignItems="center" justifyContent="center">
@@ -46,7 +46,7 @@ export const CreateAccountEmailScreen: RootStackScreenComponent<'CreateAccountEm
             }) => (
               <FormControl isInvalid={!!errors.email} isRequired>
                 <Input
-                  placeholder="Email"
+                  placeholder="E-mail"
                   {...{ onChangeText, onBlur, value }}
                   autoCapitalize="none"
                   autoCorrect={false}
@@ -67,7 +67,7 @@ export const CreateAccountEmailScreen: RootStackScreenComponent<'CreateAccountEm
         <Center w="100%">
           <Button mt={2} onPress={onSubmit} style={{ backgroundColor: '#2B748E', width: '100%' }}>
             <Text fontSize={12} color="white" bold>
-              Confirmar Email
+              Confirmar E-mail
             </Text>
           </Button>
         </Center>

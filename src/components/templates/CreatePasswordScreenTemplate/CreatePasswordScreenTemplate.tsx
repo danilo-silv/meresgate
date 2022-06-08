@@ -66,7 +66,7 @@ export const CreatePasswordScreenTemplate: FunctionComponent<CreatePasswordScree
         <VStack space={10} alignItems="center" justifyContent="space-around">
           <Center alignItems="center" justifyContent="center" mt={6} mb={6}>
             <Text fontSize={14} color="#2B748E" bold>
-              Vamos criar a sua conta! Insira o dado abaixo:
+              Seguindo as instruções abaixo, crie uma senha forte para a sua conta:
             </Text>
           </Center>
           <Center w="100%" alignItems="center" justifyContent="center">
