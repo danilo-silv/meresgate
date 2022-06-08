@@ -31,7 +31,7 @@ export const CreateAccountLastNameScreen: RootStackScreenComponent<'CreateAccoun
       <VStack space={40} alignItems="center" justifyContent="space-around">
         <Center alignItems="center" justifyContent="center" mt={6} mb={6}>
           <Text fontSize={14} color="#2B748E" bold>
-            Vamos criar a sua conta! Insira o dado abaixo:
+            Agora insira o seu último nome:
           </Text>
         </Center>
         <Center w="100%" alignItems="center" justifyContent="center">
@@ -66,7 +66,7 @@ export const CreateAccountLastNameScreen: RootStackScreenComponent<'CreateAccoun
         <Center w="100%">
           <Button mt={2} onPress={onSubmit} style={{ backgroundColor: '#2B748E', width: '100%' }}>
             <Text fontSize={12} color="white" bold>
-              Confirmar Primeiro Nome
+              Confirmar último Nome
             </Text>
           </Button>
         </Center>

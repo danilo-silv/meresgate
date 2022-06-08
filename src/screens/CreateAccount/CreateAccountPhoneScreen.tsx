@@ -36,7 +36,7 @@ export const CreateAccountPhoneScreen: RootStackScreenComponent<'CreateAccountPh
       <VStack space={40} alignItems="center" justifyContent="space-around">
         <Center alignItems="center" justifyContent="center" mt={6} mb={6}>
           <Text fontSize={14} color="#2B748E" bold>
-            Vamos criar a sua conta! Insira o dado abaixo:
+            Digite agora o número do seu celular:
           </Text>
         </Center>
         <Center w="100%" alignItems="center" justifyContent="center">
@@ -61,7 +61,7 @@ export const CreateAccountPhoneScreen: RootStackScreenComponent<'CreateAccountPh
                       dddMask: '+55 (99) '
                     })
                   }}
-                  placeholder="Número de celular"
+                  placeholder="Número do celular"
                   enablesReturnKeyAutomatically
                   keyboardType="phone-pad"
                   maxLength={19}

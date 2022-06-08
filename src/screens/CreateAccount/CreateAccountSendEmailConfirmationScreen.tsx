@@ -53,16 +53,20 @@ export const CreateAccountSendEmailConfirmationScreen: RootStackScreenComponent<
 
   return (
     <Layouts.Internal typeTwo>
-      <Heading textAlign="center">Falta pouco</Heading>
-      <Text textAlign="center">
+      <Heading textAlign="center" mb={5}>
+        Falta pouco
+      </Heading>
+      <Text textAlign="center" mb={5}>
         Um e-mail com um link de confirmação foi enviado para {route.params.email}. Acesse seu
         e-mail para confirmar seu cadastro.
       </Text>
-      <Text textAlign="center">Não recebeu o e-mail de confirmação?</Text>
-      <Button isLoading={preAuthMutation.isLoading} mt={2} onPress={resendEmail}>
+      <Text textAlign="center" mb={5}>
+        Não recebeu o e-mail de confirmação?
+      </Text>
+      <Button mb={7} isLoading={preAuthMutation.isLoading} mt={2} onPress={resendEmail}>
         Reenviar e-mail
       </Button>
-      <Text textAlign="center">
+      <Text textAlign="center" mb={3}>
         Caso não tenha recebido o e-mail, certifique-se de que o e-mail informado está correto e
         verifique a sua caixa de spam.
       </Text>
