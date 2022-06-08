@@ -9,10 +9,8 @@ import { RootStackScreenProps } from 'src/types'
 import { AbandonedPets } from './AbandonedPets'
 import { PetsForAdoption } from './PetsForAdoption'
 
-export const HomeScreen = ({ navigation }: RootStackScreenProps<'Home'>) => {
+export const HomeScreen = (props: RootStackScreenProps<'Home'>) => {
   const [step, setStep] = useState<number>(1)
-
-  // const goToKnowMore = useCallback(() => navigation.navigate('KnowMore'), [navigation])
 
   const handleSetStep = useCallback((step) => setStep(step), [])
 
@@ -56,7 +54,7 @@ export const HomeScreen = ({ navigation }: RootStackScreenProps<'Home'>) => {
               opacity: 0,
               scale: 0.9
             }}>
-            <AbandonedPets />
+            <AbandonedPets {...props} />
           </MotiView>
         )}
         {step === 2 && (
@@ -73,7 +71,7 @@ export const HomeScreen = ({ navigation }: RootStackScreenProps<'Home'>) => {
               opacity: 0,
               scale: 0.9
             }}>
-            <PetsForAdoption />
+            <PetsForAdoption {...props} />
           </MotiView>
         )}
       </Layouts.Internal>

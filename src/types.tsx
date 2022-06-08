@@ -54,6 +54,7 @@ export type RootStackParamList = {
   ResetPasswordSuccessfully: undefined
   Tabs: undefined
   KnowMore: undefined
+  PetInformation: undefined
 }
 
 export type RootStackScreenProps<Screen extends keyof RootStackParamList> = NativeStackScreenProps<
@@ -67,6 +68,7 @@ export type RootTabParamList = {
   PerRegister: undefined
   KnowMore: undefined
   NotFound: undefined
+  PetInformation: undefined
 }
 
 export type RootTabScreenProps<Screen extends keyof RootTabParamList> = CompositeScreenProps<

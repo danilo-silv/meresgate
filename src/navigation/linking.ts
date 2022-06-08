@@ -31,7 +31,11 @@ export const linking: LinkingOptions<RootStackParamList> = {
               KnowMore: 'knowMore'
             }
           },
-
+          PetInformation: {
+            screens: {
+              KnowMore: 'petInformation'
+            }
+          },
           NotFound: '*'
         }
       },

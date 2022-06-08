@@ -28,8 +28,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: theme.colors.primary[400],
-    paddingHorizontal: 22,
-    paddingTop: Platform.OS === 'android' ? 1 : 25,
-    paddingBottom: 70
+    paddingTop: 18,
+    paddingBottom: 120
   }
 })

@@ -45,3 +45,5 @@ export { PetRegister } from './Tabs/PetRegister/PetRegister'
 export { KnowMoreScreen } from './KnowMoreScreen/KnowMoreScreen'
 
 export { NotFoundScreen } from './NotFoundScreen/NotFoundScreen'
+
+export { PetInformationScreen } from './PetInformationScreen/PetInformationScreen'

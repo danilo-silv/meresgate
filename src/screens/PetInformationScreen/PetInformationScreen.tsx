@@ -7,7 +7,7 @@ import { Avatar, Button, HStack, Image, ScrollView, Text, View, VStack } from 'n
 import { StyleSheet } from 'react-native'
 import { theme } from 'src/theme'
 
-export const PetInformation: FunctionComponent = () => {
+export const PetInformationScreen: FunctionComponent = () => {
   const pet = {
     name: 'Doguinho 1',
     address: 'Av. Dr. Cardoso de Melo 1467, Vila Olimpia',

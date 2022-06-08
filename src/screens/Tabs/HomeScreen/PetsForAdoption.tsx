@@ -1,9 +1,10 @@
-import { FunctionComponent } from 'react'
+import { useCallback } from 'react'
 
 import { Ionicons, FontAwesome5 } from '@expo/vector-icons'
 import { DogImageOne, DogImageThree, DogImageTwo, WomanAndPet } from 'assets'
 import { HStack, Image, Text, theme, View, VStack } from 'native-base'
 import { TouchableOpacity } from 'react-native'
+import { RootStackScreenProps } from 'src/types'
 
 const petsForAdotpion = [
   {
@@ -29,7 +30,11 @@ const petsForAdotpion = [
   }
 ]
 
-export const PetsForAdoption: FunctionComponent = () => {
+export const PetsForAdoption = ({ navigation }: RootStackScreenProps<'Home'>) => {
+  const goToKnowMore = useCallback(() => navigation.navigate('KnowMore'), [navigation])
+
+  const goToPetInformation = useCallback(() => navigation.navigate('PetInformation'), [navigation])
+
   return (
     <View mt={5}>
       <Text textAlign="justify" fontSize={18} mb={5} color={theme.colors.primary[900]}>
@@ -41,6 +46,7 @@ export const PetsForAdoption: FunctionComponent = () => {
           return (
             <TouchableOpacity
               key={pet.id}
+              onPress={goToPetInformation}
               style={{
                 marginHorizontal: 5,
                 marginVertical: 5,
@@ -117,7 +123,7 @@ export const PetsForAdoption: FunctionComponent = () => {
             <Text color="white" fontSize={17} fontWeight="bold" my={2}>
               Nosso Objetivo
             </Text>
-            <TouchableOpacity style={{ marginLeft: 10 }}>
+            <TouchableOpacity onPress={goToKnowMore} style={{ marginLeft: 10 }}>
               <FontAwesome5 name="chevron-circle-right" size={24} color="white" />
             </TouchableOpacity>
           </HStack>
