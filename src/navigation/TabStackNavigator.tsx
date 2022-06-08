@@ -1,5 +1,7 @@
+import { FunctionComponent } from 'react'
+
 import { FontAwesome } from '@expo/vector-icons'
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
+import { BottomTabScreenProps, createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import { ButtonRegisterDog, Icons } from 'atoms'
 import { MotiView } from 'moti'
 import { Pressable, useTheme } from 'native-base'
@@ -7,6 +9,10 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import { HomeScreen, PetRegister, ProfileScreen } from 'screens'
 
 import { RootStackScreenComponent, RootTabParamList } from '../types'
+
+export type TabStackScreen<RouteName extends keyof RootTabParamList> = FunctionComponent<
+  BottomTabScreenProps<RootTabParamList, RouteName>
+>
 
 const Tab = createBottomTabNavigator<RootTabParamList>()
 
