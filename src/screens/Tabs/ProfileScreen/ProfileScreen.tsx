@@ -1,11 +1,11 @@
 import { FunctionComponent } from 'react'
 
-import { GreyPawUserProfile, ManAndCat } from 'assets'
-import { Avatar, HStack, Image, ScrollView, Text, View, VStack } from 'native-base'
-import { theme } from 'src/theme'
-import Layouts from 'layouts'
-import { StyleSheet, TouchableOpacity } from 'react-native'
 import { AntDesign, Ionicons, MaterialIcons, Zocial } from '@expo/vector-icons'
+import { GreyPawUserProfile, ManAndCat } from 'assets'
+import Layouts from 'layouts'
+import { Avatar, HStack, Image, ScrollView, Text, View, VStack } from 'native-base'
+import { StyleSheet, TouchableOpacity } from 'react-native'
+import { theme } from 'src/theme'
 
 type person = {
   name: string
