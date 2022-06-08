@@ -4,7 +4,7 @@ import { ButtonRegisterDog, Icons } from 'atoms'
 import { MotiView } from 'moti'
 import { Pressable, useTheme } from 'native-base'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
-import { HomeScreen, PhotoDog, ProfileScreen } from 'screens'
+import { HomeScreen, PetRegister, ProfileScreen } from 'screens'
 
 import { RootStackScreenComponent, RootTabParamList } from '../types'
 
@@ -17,7 +17,7 @@ const tabs = [
     name: 'Home'
   },
   {
-    component: PhotoDog,
+    component: PetRegister,
     icon: ButtonRegisterDog,
     name: '-'
   },

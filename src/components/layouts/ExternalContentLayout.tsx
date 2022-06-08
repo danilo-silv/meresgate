@@ -1,10 +1,11 @@
 import { FunctionComponent, memo } from 'react'
 
-import { Image, KeyboardAvoidingView, View, VStack } from 'native-base'
+import { Image, KeyboardAvoidingView, VStack } from 'native-base'
 import { Platform, StyleSheet } from 'react-native'
+import { SafeAreaView } from 'react-native-safe-area-context'
 import { theme } from 'src/theme'
 
-import LogoOne from '../../assets/LogoOne.png'
+import LogoTwo from '../../assets/LogoTwo.png'
 
 interface Props {
   children: React.ReactNode
@@ -12,11 +13,11 @@ interface Props {
 
 export const ExternalContentLayout: FunctionComponent<Props> = memo(({ children }) => (
   <KeyboardAvoidingView {...(Platform.OS === 'android' ? {} : { behavior: 'padding' })} flex={1}>
-    <View style={styles.container}>
-      <Image source={LogoOne} resizeMode="contain" alt="LogoOne" />
-    </View>
+    <SafeAreaView style={styles.container}>
+      <Image source={LogoTwo} resizeMode="contain" alt="LogoOne" width={300} height={90} />
+    </SafeAreaView>
 
-    <VStack justifyContent="center" p={5}>
+    <VStack flex={1} justifyContent="center">
       {children}
     </VStack>
   </KeyboardAvoidingView>
@@ -27,9 +28,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: theme.colors.primary[400],
-    borderBottomLeftRadius: 25,
-    borderBottomRightRadius: 25,
     paddingHorizontal: 22,
-    paddingBottom: 20
+    paddingTop: Platform.OS === 'android' ? 1 : 25,
+    paddingBottom: 70
   }
 })

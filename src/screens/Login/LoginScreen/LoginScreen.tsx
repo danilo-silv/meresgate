@@ -1,6 +1,16 @@
 import { Icons } from 'atoms'
 import Layouts from 'layouts'
-import { Box, Button, FormControl, HStack, Input, ScrollView, Switch, Text } from 'native-base'
+import {
+  Box,
+  Button,
+  FormControl,
+  HStack,
+  Input,
+  ScrollView,
+  Switch,
+  Text,
+  useTheme
+} from 'native-base'
 import { RootStackScreenComponent } from 'navigation'
 import { Controller } from 'react-hook-form'
 import { Platform, StyleSheet } from 'react-native'
@@ -17,6 +27,8 @@ export const LoginScreen: RootStackScreenComponent<'Login'> = ({ navigation }) =
     submit,
     goToCreateAccountFirstNameScreen
   } = useLoginScreen({ navigation })
+
+  const theme = useTheme()
 
   return (
     <ScrollView showsVerticalScrollIndicator={false}>
@@ -57,7 +69,8 @@ export const LoginScreen: RootStackScreenComponent<'Login'> = ({ navigation }) =
           </Text>
           <Switch
             size={Platform.OS === 'ios' ? 'sm' : 'md'}
-            onTrackColor="#2B748E"
+            trackColor={{ false: '#767577', true: theme.colors.primary[100] }}
+            thumbColor={theme.colors.primary[600]}
             defaultIsChecked
             onValueChange={setRememberEmail}
           />

@@ -136,7 +136,7 @@ export const KnowMoreScreen = ({ navigation }: RootStackScreenProps<'KnowMore'>)
                 </Text>
               </HStack>
 
-              <View position="absolute" right={0} bottom={-140}>
+              <View position="absolute" right={-60} bottom={-170}>
                 <Image
                   source={BlueLeftPaw}
                   resizeMode="contain"
@@ -149,43 +149,43 @@ export const KnowMoreScreen = ({ navigation }: RootStackScreenProps<'KnowMore'>)
             </View>
           </View>
         </View>
-        <View
-          style={{
-            width: '100%',
-            backgroundColor: theme.colors.primary[800],
-            borderTopLeftRadius: 25,
-            borderTopRightRadius: 25,
-            padding: 36,
-            marginTop: 80
-          }}>
-          <Text color="white" fontWeight="700" fontSize={20}>
-            Em caso de dúvidas, acesse as redes sociais dos desenvolvedores!
-          </Text>
-          <HStack flexDirection="row" flexWrap="wrap" justifyContent="center" space={6} py={10}>
-            {devs.map(({ social, image }) => {
-              return (
-                <View pt={5} alignItems="center" key={social}>
-                  <Image alt={social} source={image} width={55} height={57} />
-                  <Text color="white">{social}</Text>
-                </View>
-              )
-            })}
-          </HStack>
-          <Text color="white" fontSize={15} alignSelf="center">
-            Ou mande em{' '}
-            <Text color="white" fontWeight="700" fontSize={15}>
-              meResgate@gmail.com
-            </Text>
-          </Text>
-        </View>
       </Layouts.Internal>
+      <View
+        style={{
+          width: '100%',
+          backgroundColor: theme.colors.primary[800],
+          borderTopLeftRadius: 25,
+          borderTopRightRadius: 25,
+          paddingTop: 23,
+          padding: 36,
+          marginTop: 80
+        }}>
+        <Text color="white" fontWeight="700" fontSize={20}>
+          Em caso de dúvidas, acesse as redes sociais dos desenvolvedores!
+        </Text>
+        <HStack flexDirection="row" flexWrap="wrap" justifyContent="center" space={6} py={10}>
+          {devs.map(({ social, image }) => {
+            return (
+              <View pt={5} alignItems="center" key={social}>
+                <Image alt={social} source={image} width={55} height={57} />
+                <Text color="white">{social}</Text>
+              </View>
+            )
+          })}
+        </HStack>
+        <Text color="white" fontSize={15} alignSelf="center">
+          Ou mande em{' '}
+          <Text color="white" fontWeight="700" fontSize={15}>
+            meResgate@gmail.com
+          </Text>
+        </Text>
+      </View>
     </ScrollView>
   )
 }
 
 const styles = StyleSheet.create({
   body: {
-    paddingHorizontal: 20,
     paddingTop: 25,
     marginBottom: 75
   },

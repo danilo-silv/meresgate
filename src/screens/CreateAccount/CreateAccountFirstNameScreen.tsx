@@ -1,10 +1,10 @@
-import { useCallback } from 'react'
+import { useCallback, useState } from 'react'
 
 import Layouts from 'layouts'
-import { Button, Center, FormControl, Input, Text, VStack } from 'native-base'
+import { Button, Center, FormControl, Input, Switch, Text, useTheme, VStack } from 'native-base'
 import { RootStackScreenComponent } from 'navigation'
 import { Controller, SubmitHandler, useForm } from 'react-hook-form'
-import { Keyboard } from 'react-native'
+import { Keyboard, Platform } from 'react-native'
 import { CreateAccountPayload } from 'src/integration/resources/createAccount'
 
 type FormData = Pick<CreateAccountPayload, 'firstName'>
@@ -12,6 +12,8 @@ type FormData = Pick<CreateAccountPayload, 'firstName'>
 export const CreateAccountFirstNameScreen: RootStackScreenComponent<'CreateAccountFirstName'> = ({
   navigation
 }) => {
+  const [isOng, setIsOng] = useState<boolean>(false)
+
   const { control, handleSubmit } = useForm<FormData>()
 
   const onSubmit = handleSubmit(
@@ -25,9 +27,13 @@ export const CreateAccountFirstNameScreen: RootStackScreenComponent<'CreateAccou
     )
   )
 
+  const toggleSwitch = () => setIsOng(!isOng)
+
+  const theme = useTheme()
+
   return (
     <Layouts.Internal typeTwo>
-      <VStack space={40} alignItems="center" justifyContent="space-around">
+      <VStack space={75} alignItems="center" justifyContent="space-around">
         <Center alignItems="center" justifyContent="center" mt={6} mb={6}>
           <Text fontSize={14} color="#2B748E" bold>
             Vamos criar a sua conta! Insira o dado abaixo:
@@ -63,7 +69,19 @@ export const CreateAccountFirstNameScreen: RootStackScreenComponent<'CreateAccou
           />
         </Center>
         <Center w="100%">
-          <Button mt={2} onPress={onSubmit} style={{ backgroundColor: '#2B748E', width: '100%' }}>
+          <Text style={{ fontSize: 14, color: '#2B748E' }}>
+            Em caso de ONGs ou cuidadores autônomos, marcar a opção abaixo:
+          </Text>
+          <Switch
+            size={Platform.OS === 'ios' ? 'sm' : 'md'}
+            trackColor={{ false: '#767577', true: theme.colors.primary[100] }}
+            thumbColor={isOng ? theme.colors.primary[600] : '#fff'}
+            onValueChange={toggleSwitch}
+            value={isOng}
+          />
+        </Center>
+        <Center w="100%">
+          <Button onPress={onSubmit} style={{ backgroundColor: '#2B748E', width: '100%' }}>
             <Text fontSize={12} color="white" bold>
               Confirmar Primeiro Nome
             </Text>
