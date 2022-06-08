@@ -3,7 +3,6 @@ import { FunctionComponent, useState } from 'react'
 import Layouts from 'layouts'
 import {
   Box,
-  Button,
   HStack,
   Input,
   ScrollView,
@@ -15,6 +14,7 @@ import {
   VStack
 } from 'native-base'
 import { Platform, StyleSheet } from 'react-native'
+import { TouchableOpacity } from 'react-native-gesture-handler'
 import { theme } from 'src/theme'
 
 export const PetRegister: FunctionComponent = () => {
@@ -24,6 +24,8 @@ export const PetRegister: FunctionComponent = () => {
 
   const toggleSwitch = (switchKey: string): void =>
     switchKey === 'vacinated' ? setIsVacinated(!isVacinated) : setIsRescued(!isRescued)
+
+  // const goToPetInformation = useCallback(() => navigation.navigate('PetInformation'), [navigation])
 
   return (
     <ScrollView showsVerticalScrollIndicator={false}>
@@ -129,14 +131,20 @@ export const PetRegister: FunctionComponent = () => {
                 value={isRescued}
               />
             </HStack>
-            <Button
+            <TouchableOpacity
+              // onPress={goToPetInformation}
               style={{
-                marginTop: 20,
+                marginTop: 50,
                 marginBottom: 40,
+                borderRadius: 20,
+                paddingHorizontal: 10,
+                paddingVertical: 10,
                 backgroundColor: theme.colors.primary[700]
               }}>
-              Salvar
-            </Button>
+              <Text textAlign="center" color={theme.colors.white} bold>
+                Salvar
+              </Text>
+            </TouchableOpacity>
           </View>
         </VStack>
       </Layouts.Internal>
