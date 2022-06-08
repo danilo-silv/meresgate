@@ -7,18 +7,21 @@ import { TouchableOpacity } from 'react-native'
 
 const petsForAdotpion = [
   {
+    id: 1,
     name: 'Guto',
     gender: 'm',
     isVaccinated: true,
     image: DogImageOne
   },
   {
+    id: 2,
     name: 'Paçoca',
     gender: 'f',
     isVaccinated: false,
     image: DogImageTwo
   },
   {
+    id: 3,
     name: 'Luz',
     gender: 'f',
     isVaccinated: true,
@@ -38,6 +41,7 @@ export const PhotoDog: FunctionComponent = () => {
           {petsForAdotpion.map((pet) => {
             return (
               <TouchableOpacity
+                key={pet.id}
                 style={{
                   marginHorizontal: 5,
                   marginVertical: 5,
