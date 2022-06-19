@@ -1,7 +1,11 @@
 import { useCallback } from 'react'
 
-import { Button, Center, VStack } from 'native-base'
+import { Icons } from 'atoms'
+import { Button, Text, View } from 'native-base'
 import { RootStackScreenComponent } from 'navigation'
+import { StyleSheet } from 'react-native'
+import { SafeAreaView } from 'react-native-safe-area-context'
+import { theme } from 'src/theme'
 
 import { useAuthAtom } from '../../store/auth'
 
@@ -17,10 +21,55 @@ export const OnboardingScreen: RootStackScreenComponent<'Onboarding'> = () => {
   }, [authAtom, setAuthAtom])
 
   return (
-    <Center flex={1}>
-      <VStack space={2}>
-        <Button onPress={goToHomeScreen}>Começar</Button>
-      </VStack>
-    </Center>
+    <SafeAreaView style={styles.container}>
+      <View style={styles.content}>
+        <View style={styles.illustration}>
+          <Icons.Onboarding size={378} />
+        </View>
+        <Text />
+
+        <Text style={styles.title}>Seja bem vindo!</Text>
+
+        <Text style={styles.subtitle}>
+          Adotar é salvar vidas! Ter um animalzinho de estimação é ter uma amizade verdadeira e
+          leal.
+        </Text>
+
+        <Button onPress={goToHomeScreen} style={{ backgroundColor: '#2B748E', width: '100%' }}>
+          <Text fontSize={12} color="white" bold>
+            Continuar
+          </Text>
+        </Button>
+      </View>
+    </SafeAreaView>
   )
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'space-around'
+  },
+  content: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: '100%',
+    padding: 30
+  },
+  title: {
+    fontSize: 22,
+    textAlign: 'center',
+    color: theme.colors.primary[700],
+    fontWeight: 'bold',
+    lineHeight: 38
+  },
+  subtitle: {
+    textAlign: 'center',
+    fontSize: 15,
+    paddingVertical: 35,
+    color: theme.colors.primary[600]
+  },
+  illustration: {}
+})
