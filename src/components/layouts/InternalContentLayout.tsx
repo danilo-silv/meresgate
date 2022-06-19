@@ -18,8 +18,8 @@ export const InternalContentLayout: FunctionComponent<Props> = memo(({ children,
     <SafeAreaView
       style={{
         ...styles.container,
-        paddingTop: Platform.OS === 'android' && !typeTwo ? 1 : 25,
-        paddingBottom: Platform.OS === 'android' ? 18 : 0
+        paddingTop: Platform.OS === 'android' && !typeTwo ? 1 : 10,
+        paddingBottom: Platform.OS === 'android' && typeTwo ? 18 : 0
       }}>
       <Image
         source={typeTwo ? LogoTwo : LogoOne}

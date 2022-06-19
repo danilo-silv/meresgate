@@ -1,3 +1,6 @@
+import { useCallback } from 'react'
+
+import { FontAwesome } from '@expo/vector-icons'
 import {
   BlueCamera,
   BlueHand,
@@ -15,7 +18,7 @@ import {
 } from 'assets'
 import Layouts from 'layouts'
 import { HStack, Image, ScrollView, Text, theme, View } from 'native-base'
-import { StyleSheet } from 'react-native'
+import { StyleSheet, TouchableOpacity } from 'react-native'
 import { RootStackScreenProps } from 'src/types'
 
 const devs = [
@@ -42,10 +45,25 @@ const devs = [
 ]
 
 export const KnowMoreScreen = ({ navigation }: RootStackScreenProps<'KnowMore'>) => {
+  const gotBack = useCallback(() => navigation.goBack(), [navigation])
+
   return (
-    <ScrollView showsVerticalScrollIndicator={false}>
+    <ScrollView showsVerticalScrollIndicator={false} position="relative">
       <Layouts.Internal typeTwo>
         <View>
+          <View position="absolute" top={-60} left={-10}>
+            <TouchableOpacity
+              onPress={gotBack}
+              style={{
+                borderRadius: 50,
+                width: 30,
+                height: 30,
+                justifyContent: 'center',
+                alignItems: 'center'
+              }}>
+              <FontAwesome name="long-arrow-left" size={30} color={theme.colors.white} />
+            </TouchableOpacity>
+          </View>
           <View style={styles.body} position="relative">
             <View height={380}>
               <Text fontWeight={700} fontSize={20} pt={15} color="#2B748E">

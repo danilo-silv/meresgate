@@ -96,7 +96,7 @@ export const ProfileScreen: FunctionComponent = () => {
                         style={{
                           backgroundColor: '#2B748E',
                           marginLeft: 15,
-                          borderRadius: 7,
+
                           padding: 2
                         }}
                       />

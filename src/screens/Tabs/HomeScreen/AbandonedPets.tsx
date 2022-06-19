@@ -198,7 +198,7 @@ export const AbandonedPets = ({ navigation }: RootStackScreenProps<'Home'>) => {
               <FontAwesome5 name="chevron-circle-right" size={24} color="white" />
             </TouchableOpacity>
           </HStack>
-          <Text color="white" textAlign="justify" fontSize={15} mt={3}>
+          <Text color="white" fontSize={15} mt={3}>
             Aplicação para facilitar o trabalho de ONGs e protetores autônomos em localizar animais
             em situação de abandono, através de localização aproximada.
           </Text>
