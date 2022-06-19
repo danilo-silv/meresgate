@@ -1,6 +1,6 @@
 import { useCallback } from 'react'
 
-import { FontAwesome5, Ionicons } from '@expo/vector-icons'
+import { FontAwesome5 } from '@expo/vector-icons'
 import {
   CaoSemDonoImage,
   DogImageFive,
@@ -98,16 +98,15 @@ export const AbandonedPets = ({ navigation }: RootStackScreenProps<'Home'>) => {
               onPress={goToPetInformation}
               style={{
                 marginHorizontal: 5,
-                marginVertical: 5,
-                borderRadius: 20,
-                backgroundColor: 'rgba(0, 183, 255, 0.04)',
+                borderRadius: 30,
+                backgroundColor: '#2B748E',
                 paddingHorizontal: 10,
                 paddingVertical: 10,
-                borderWidth: 2,
-                borderColor: theme.colors.primary[200]
+                borderWidth: 1,
+                borderColor: '#2B748E'
               }}>
               <Text
-                color={theme.colors.primary[700]}
+                color={theme.colors.white}
                 fontSize={16}
                 fontWeight="bold"
                 mb={3}
@@ -116,26 +115,9 @@ export const AbandonedPets = ({ navigation }: RootStackScreenProps<'Home'>) => {
                 {item.foundAt}
               </Text>
               <VStack alignItems="center">
-                <HStack fontSize={15} color={theme.colors.primary[500]} justifyContent="center">
-                  {item.gender === 'm' ? (
-                    <>
-                      <Ionicons name="male" size={15} color={theme.colors.primary[700]} />
-                      <Text ml={2} color={theme.colors.primary[700]}>
-                        Macho
-                      </Text>
-                    </>
-                  ) : (
-                    <>
-                      <Ionicons name="female" size={15} color={theme.colors.primary[700]} />
-                      <Text ml={2} color={theme.colors.primary[700]}>
-                        Fêmea
-                      </Text>
-                    </>
-                  )}
-                </HStack>
                 <HStack fontSize={15} color={theme.colors.primary[500]}>
-                  <FontAwesome5 name="syringe" size={15} color={theme.colors.primary[700]} />
-                  <Text ml={2} color={theme.colors.primary[700]}>
+                  <FontAwesome5 name="syringe" size={15} color={theme.colors.white} />
+                  <Text ml={2} color={theme.colors.white}>
                     {item.isVaccinated ? 'Vacinado' : 'Não vacinado'}
                   </Text>
                 </HStack>
@@ -144,10 +126,10 @@ export const AbandonedPets = ({ navigation }: RootStackScreenProps<'Home'>) => {
                 <Image
                   source={item.image}
                   alt="dog image"
-                  height={32}
+                  height={112}
                   mt={2}
-                  w={32}
-                  borderRadius={70}
+                  w={111}
+                  borderRadius={50}
                 />
               </View>
             </TouchableOpacity>
