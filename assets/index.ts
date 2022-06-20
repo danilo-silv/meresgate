@@ -31,6 +31,7 @@ import WhitePaw from './white-paw.png'
 import WomanAndPet from './woman-and-pet.png'
 import WomanExample from './woman-example.png'
 import YellowPaw from './yellow-paw.png'
+import AddDogPhoto from './add-dog-photo.png'
 
 export {
   LuizaMellImage,
@@ -43,6 +44,7 @@ export {
   DogImageFive,
   MailIconWhite,
   BluePaw,
+  AddDogPhoto,
   BlueLeftPaw,
   YellowPaw,
   WhitePaw,
