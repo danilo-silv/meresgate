@@ -1,10 +1,14 @@
-import { FunctionComponent, useCallback, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 
-import { FontAwesome } from '@expo/vector-icons'
+import { FontAwesome, MaterialIcons } from '@expo/vector-icons'
+import { AddDogPhoto } from 'assets'
+import { Camera, CameraType } from 'expo-camera'
+import * as ImagePicker from 'expo-image-picker'
 import Layouts from 'layouts'
 import {
   Box,
   HStack,
+  Image,
   Input,
   ScrollView,
   Select,
@@ -15,7 +19,7 @@ import {
   VStack
 } from 'native-base'
 import { RootTabScreenProps } from 'navigation'
-import { Platform, StyleSheet } from 'react-native'
+import { Alert, Platform, StyleSheet } from 'react-native'
 import { TouchableOpacity } from 'react-native-gesture-handler'
 import { theme } from 'src/theme'
 
@@ -24,12 +28,91 @@ export const PetRegister: RootTabScreenProps<'PetRegister'> = ({ navigation }) =
 
   const [isRescued, setIsRescued] = useState<boolean>(false)
 
+  const camRef = useRef<any>()
+
+  const [isCameraVisible, setIsCameraVisible] = useState<boolean>(false)
+
+  const [hasPermission, setHasPermission] = useState<any>(null)
+
+  const [type, setType] = useState<CameraType>(CameraType.back)
+
+  const [image, setImage] = useState<any>(null)
+
   const toggleSwitch = (switchKey: string): void =>
     switchKey === 'vacinated' ? setIsVacinated(!isVacinated) : setIsRescued(!isRescued)
 
   // const goToPetInformation = useCallback(() => navigation.navigate('PetInformation'), [navigation])
 
   const gotBack = useCallback(() => navigation.goBack(), [navigation])
+
+  const pickImageFromGallery = async () => {
+    const result = await ImagePicker.launchImageLibraryAsync({
+      mediaTypes: ImagePicker.MediaTypeOptions.All,
+      allowsEditing: true,
+      aspect: [4, 3],
+      quality: 1
+    })
+
+    console.log(result)
+
+    if (!result.cancelled) {
+      setImage(result.uri)
+    }
+  }
+
+  const takePicture = async () => {
+    const options = {
+      quality: 1,
+      exif: false
+    }
+
+    const newPhoto = await camRef.current.takePictureAsync(options)
+
+    console.log(newPhoto)
+
+    setImage(newPhoto.uri)
+
+    setIsCameraVisible(false)
+  }
+
+  const handlePetPhoto = () => {
+    Alert.alert(
+      'Selecione',
+      'De onde você irá selecionar a imagem?',
+      [
+        {
+          text: 'Galeria',
+          onPress: () => pickImageFromGallery(),
+          style: 'default'
+        },
+        {
+          text: 'Câmera',
+          onPress: () => setIsCameraVisible(true),
+          style: 'default'
+        }
+      ],
+      {
+        cancelable: true,
+        onDismiss: () => setIsCameraVisible(false)
+      }
+    )
+  }
+
+  useEffect(() => {
+    ;(async () => {
+      const { status } = await Camera.requestCameraPermissionsAsync()
+
+      setHasPermission(status === 'granted')
+    })()
+  }, [])
+
+  if (hasPermission === null) {
+    return <View />
+  }
+
+  if (hasPermission === false) {
+    return <Text>No access to camera</Text>
+  }
 
   return (
     <ScrollView showsVerticalScrollIndicator={false} position="relative">
@@ -48,9 +131,51 @@ export const PetRegister: RootTabScreenProps<'PetRegister'> = ({ navigation }) =
           </TouchableOpacity>
         </View>
         <VStack alignItems="center" justifyContent="center" paddingX={3} paddingBottom={100}>
+          {isCameraVisible && (
+            <Camera
+              ref={camRef}
+              style={{ width: '100%', height: 540, justifyContent: 'flex-end' }}
+              type={type}>
+              <HStack justifyContent="space-around">
+                <TouchableOpacity
+                  style={{ paddingVertical: 20 }}
+                  onPress={() => {
+                    setType(type === CameraType.back ? CameraType.front : CameraType.back)
+                  }}>
+                  <MaterialIcons name="flip-camera-android" size={36} color="white" />
+                </TouchableOpacity>
+                <TouchableOpacity
+                  style={{ paddingVertical: 20 }}
+                  onPress={() => {
+                    takePicture()
+                  }}>
+                  <MaterialIcons name="photo-camera" size={36} color="white" />
+                </TouchableOpacity>
+                <TouchableOpacity
+                  style={{ paddingVertical: 20 }}
+                  onPress={() => {
+                    setIsCameraVisible(false)
+                  }}>
+                  <MaterialIcons name="cancel" size={36} color="white" />
+                </TouchableOpacity>
+              </HStack>
+            </Camera>
+          )}
           <Text style={styles.createAccountText}>
-            Preencha o máximo de dados a respeito do pet encontrado..
+            Preencha o máximo de dados a respeito do pet encontrado...
           </Text>
+          <TouchableOpacity onPress={() => handlePetPhoto()}>
+            <Image
+              source={image ? { uri: image } : AddDogPhoto}
+              alt="dog icon and a camera"
+              mb={3}
+              style={{
+                width: image ? 125 : 100,
+                height: image ? 125 : 100,
+                borderRadius: image ? 100 : 20
+              }}
+            />
+          </TouchableOpacity>
           <Text fontSize={15} color={theme.colors.primary[900]} my={2}>
             Informações de endereço:
           </Text>
