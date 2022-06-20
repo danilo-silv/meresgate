@@ -21,6 +21,7 @@ import {
 import { RootTabScreenProps } from 'navigation'
 import { Alert, Platform, StyleSheet } from 'react-native'
 import { TouchableOpacity } from 'react-native-gesture-handler'
+import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import { theme } from 'src/theme'
 
 export const PetRegister: RootTabScreenProps<'PetRegister'> = ({ navigation }) => {
@@ -98,6 +99,8 @@ export const PetRegister: RootTabScreenProps<'PetRegister'> = ({ navigation }) =
     )
   }
 
+  const safeAreaInsets = useSafeAreaInsets()
+
   useEffect(() => {
     ;(async () => {
       const { status } = await Camera.requestCameraPermissionsAsync()
@@ -134,7 +137,12 @@ export const PetRegister: RootTabScreenProps<'PetRegister'> = ({ navigation }) =
           {isCameraVisible && (
             <Camera
               ref={camRef}
-              style={{ width: '100%', height: 540, justifyContent: 'flex-end' }}
+              style={{
+                flex: 1,
+                width: '100%',
+                height: safeAreaInsets.top + 450,
+                justifyContent: 'flex-end'
+              }}
               type={type}>
               <HStack justifyContent="space-around">
                 <TouchableOpacity
@@ -164,7 +172,7 @@ export const PetRegister: RootTabScreenProps<'PetRegister'> = ({ navigation }) =
           <Text style={styles.createAccountText}>
             Preencha o máximo de dados a respeito do pet encontrado...
           </Text>
-          <TouchableOpacity onPress={() => handlePetPhoto()}>
+          <TouchableOpacity onPress={() => handlePetPhoto()} style={{ borderRadius: 100 }}>
             <Image
               source={image ? { uri: image } : AddDogPhoto}
               alt="dog icon and a camera"
