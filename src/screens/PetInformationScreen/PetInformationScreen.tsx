@@ -1,13 +1,16 @@
-import { FunctionComponent } from 'react'
+import { FunctionComponent, useCallback } from 'react'
 
-import { FontAwesome5 } from '@expo/vector-icons'
+import { FontAwesome, FontAwesome5 } from '@expo/vector-icons'
 import { BluePaw, GrayPaw, YellowPaw, DogPaw, Vaccine, Dog, Hand, WomanExample } from 'assets/index'
 import Layouts from 'layouts'
 import { Avatar, Button, HStack, Image, ScrollView, Text, View, VStack } from 'native-base'
-import { StyleSheet } from 'react-native'
+import { RootStackScreenComponent } from 'navigation'
+import { StyleSheet, TouchableOpacity } from 'react-native'
 import { theme } from 'src/theme'
 
-export const PetInformationScreen: FunctionComponent = () => {
+export const PetInformationScreen: RootStackScreenComponent<'PetInformation'> = ({
+  navigation
+}) => {
   const pet = {
     name: 'Doguinho 1',
     address: 'Av. Dr. Cardoso de Melo 1467, Vila Olimpia',
@@ -26,9 +29,41 @@ export const PetInformationScreen: FunctionComponent = () => {
       'Esse cachorrinho foi encontrado proximo ao restaurante Hassan Cozinha Árabe aqui na Vila Olímipia. Aparentemente não tem dono, já que não possui nenhuma coleira ou algo que identifique.'
   }
 
+  const goToKnowMore = useCallback(() => navigation.navigate('KnowMore'), [navigation])
+
+  const gotBack = useCallback(() => navigation.goBack(), [navigation])
+
   return (
-    <ScrollView showsVerticalScrollIndicator={false}>
+    <ScrollView showsVerticalScrollIndicator={false} position="relative">
       <Layouts.External>
+        <View position="absolute" top={-180} right={2}>
+          <TouchableOpacity
+            onPress={goToKnowMore}
+            style={{
+              borderRadius: 50,
+              width: 30,
+              height: 30,
+              justifyContent: 'center',
+              alignItems: 'center'
+            }}>
+            {/* <FontAwesomeIcon icon="fas fa-" /> */}
+            <FontAwesome name="exclamation-circle" size={30} color={theme.colors.white} />
+          </TouchableOpacity>
+        </View>
+
+        <View position="absolute" top={-180} left={2}>
+          <TouchableOpacity
+            onPress={gotBack}
+            style={{
+              borderRadius: 50,
+              width: 30,
+              height: 30,
+              justifyContent: 'center',
+              alignItems: 'center'
+            }}>
+            <FontAwesome name="arrow-circle-left" size={30} color={theme.colors.white} />
+          </TouchableOpacity>
+        </View>
         <VStack backgroundColor={theme.colors.primary[400]}>
           <View padding={5} mt={5} style={styles.container}>
             <Avatar

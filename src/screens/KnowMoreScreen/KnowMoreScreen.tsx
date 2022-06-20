@@ -61,7 +61,7 @@ export const KnowMoreScreen = ({ navigation }: RootStackScreenProps<'KnowMore'>)
                 justifyContent: 'center',
                 alignItems: 'center'
               }}>
-              <FontAwesome name="long-arrow-left" size={30} color={theme.colors.white} />
+              <FontAwesome name="arrow-circle-left" size={30} color={theme.colors.white} />
             </TouchableOpacity>
           </View>
           <View style={styles.body} position="relative">

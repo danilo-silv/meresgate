@@ -1,5 +1,6 @@
-import { FunctionComponent, useState } from 'react'
+import { FunctionComponent, useCallback, useState } from 'react'
 
+import { FontAwesome } from '@expo/vector-icons'
 import Layouts from 'layouts'
 import {
   Box,
@@ -13,11 +14,12 @@ import {
   View,
   VStack
 } from 'native-base'
+import { RootTabScreenProps } from 'navigation'
 import { Platform, StyleSheet } from 'react-native'
 import { TouchableOpacity } from 'react-native-gesture-handler'
 import { theme } from 'src/theme'
 
-export const PetRegister: FunctionComponent = () => {
+export const PetRegister: RootTabScreenProps<'PetRegister'> = ({ navigation }) => {
   const [isVacinated, setIsVacinated] = useState<boolean>(false)
 
   const [isRescued, setIsRescued] = useState<boolean>(false)
@@ -27,9 +29,24 @@ export const PetRegister: FunctionComponent = () => {
 
   // const goToPetInformation = useCallback(() => navigation.navigate('PetInformation'), [navigation])
 
+  const gotBack = useCallback(() => navigation.goBack(), [navigation])
+
   return (
-    <ScrollView showsVerticalScrollIndicator={false}>
+    <ScrollView showsVerticalScrollIndicator={false} position="relative">
       <Layouts.Internal typeTwo>
+        <View position="absolute" top={-180} left={2}>
+          <TouchableOpacity
+            onPress={gotBack}
+            style={{
+              borderRadius: 50,
+              width: 30,
+              height: 30,
+              justifyContent: 'center',
+              alignItems: 'center'
+            }}>
+            <FontAwesome name="arrow-circle-left" size={30} color={theme.colors.white} />
+          </TouchableOpacity>
+        </View>
         <VStack alignItems="center" justifyContent="center" paddingX={3} paddingBottom={100}>
           <Text style={styles.createAccountText}>
             Preencha o máximo de dados a respeito do pet encontrado..
