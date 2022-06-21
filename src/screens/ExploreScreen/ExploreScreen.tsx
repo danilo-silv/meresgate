@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect } from 'react'
 
-import { FontAwesome } from '@expo/vector-icons'
+import { FontAwesome, FontAwesome5 } from '@expo/vector-icons'
 import {
   StyleSheet,
   Text,
@@ -18,9 +18,9 @@ import { markers } from '../../model/mapData'
 
 const { width } = Dimensions.get('window')
 
-const CARD_HEIGHT = 200
+const CARD_HEIGHT = 250
 
-const CARD_WIDTH = width * 0.4
+const CARD_WIDTH = width * 0.8
 
 const SPACING_FOR_CARD_INSET = width * 0.1 - 10
 
@@ -82,7 +82,7 @@ export const ExploreScreen = ({ navigation }: RootStackScreenProps<'Explore'>) =
 
           const { coordinate } = state.markers[index]
 
-          _map?.current.animateToRegion(
+          _map.current.animateToRegion(
             {
               ...coordinate,
               latitudeDelta: state.region.latitudeDelta,
@@ -157,7 +157,6 @@ export const ExploreScreen = ({ navigation }: RootStackScreenProps<'Explore'>) =
           )
         })}
       </MapView>
-
       <TouchableOpacity
         onPress={gotBack}
         style={{
@@ -177,29 +176,55 @@ export const ExploreScreen = ({ navigation }: RootStackScreenProps<'Explore'>) =
       <Animated.ScrollView
         ref={_scrollView}
         horizontal
+        pagingEnabled
+        scrollEventThrottle={1}
         showsHorizontalScrollIndicator={false}
+        snapToInterval={CARD_WIDTH + 20}
+        snapToAlignment="center"
         style={styles.scrollView}
+        contentInset={{
+          top: 0,
+          left: SPACING_FOR_CARD_INSET,
+          bottom: 0,
+          right: SPACING_FOR_CARD_INSET
+        }}
         contentContainerStyle={{
           paddingHorizontal: Platform.OS === 'android' ? SPACING_FOR_CARD_INSET : 0
-        }}>
+        }}
+        onScroll={Animated.event(
+          [
+            {
+              nativeEvent: {
+                contentOffset: {
+                  x: mapAnimation
+                }
+              }
+            }
+          ],
+          { useNativeDriver: true }
+        )}>
         {state.markers.map((marker, index) => (
           <View style={styles.card} key={index}>
             <Image source={marker.image} style={styles.cardImage} resizeMode="cover" />
             <View style={styles.textContent}>
-              <Text numberOfLines={1} style={styles.cardtitle}>
-                {marker.title}
+              <Text numberOfLines={1} style={styles.cardAddress}>
+                {marker.address}
               </Text>
 
-              <Text numberOfLines={1} style={styles.cardDescription}>
-                {marker.description}
-              </Text>
+              <View style={styles.cardDistance}>
+                <Text>
+                  <FontAwesome5 name="map-marker-alt" size={20} color="#FFF" />
+                </Text>
+                <Text style={styles.textDistance}>{marker.distance}</Text>
+              </View>
+
               <View style={styles.button}>
                 <TouchableOpacity
                   onPress={() => {}}
                   style={[
                     styles.signIn,
                     {
-                      borderColor: '#FF6347',
+                      borderColor: '#FFF',
                       borderWidth: 1
                     }
                   ]}>
@@ -207,10 +232,10 @@ export const ExploreScreen = ({ navigation }: RootStackScreenProps<'Explore'>) =
                     style={[
                       styles.textSign,
                       {
-                        color: '#FF6347'
+                        color: '#FFF'
                       }
                     ]}>
-                    Order Now
+                    Informações
                   </Text>
                 </TouchableOpacity>
               </View>
@@ -226,13 +251,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1
   },
-  iconBack: {
-    position: 'absolute',
-    bottom: 0,
-    left: 0,
-    right: 0,
-    paddingVertical: 10
-  },
+
   scrollView: {
     position: 'absolute',
     bottom: 0,
@@ -240,20 +259,20 @@ const styles = StyleSheet.create({
     right: 0,
     paddingVertical: 10
   },
+
   card: {
     // padding: 10,
-    // elevation: 2,
-    backgroundColor: '#FFF',
-    borderTopLeftRadius: 5,
-    borderTopRightRadius: 5,
+    elevation: 2,
+    backgroundColor: '#2B748E',
+    borderRadius: 8,
     marginHorizontal: 10,
     shadowColor: '#000',
     shadowRadius: 5,
-    // shadowOpacity: 0.3,
-    // shadowOffset: { width: 2, height: -2 },
+    shadowOpacity: 0.3,
+    shadowOffset: { width: 2, height: -2 },
     height: CARD_HEIGHT,
-    width: CARD_WIDTH
-    // overflow: 'hidden'
+    width: CARD_WIDTH,
+    overflow: 'hidden'
   },
   cardImage: {
     flex: 3,
@@ -263,16 +282,25 @@ const styles = StyleSheet.create({
   },
   textContent: {
     flex: 2,
-    padding: 10
+    paddingHorizontal: 16,
+    paddingVertical: 8
   },
-  cardtitle: {
-    fontSize: 12,
+  cardAddress: {
+    fontSize: 14,
+    lineHeight: 26,
     // marginTop: 5,
-    fontWeight: 'bold'
+    fontWeight: 'bold',
+    color: '#fff'
   },
-  cardDescription: {
+  cardDistance: {
+    width: '40%',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center'
+  },
+  textDistance: {
     fontSize: 12,
-    color: '#444'
+    color: '#fff'
   },
   markerWrap: {
     alignItems: 'center',
@@ -285,12 +313,12 @@ const styles = StyleSheet.create({
     height: 30
   },
   button: {
-    alignItems: 'center',
-    marginTop: 5
+    alignItems: 'center'
   },
   signIn: {
-    width: '100%',
-    padding: 5,
+    width: '50%',
+    padding: 8,
+    marginTop: 8,
     justifyContent: 'center',
     alignItems: 'center',
     borderRadius: 3

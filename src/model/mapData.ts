@@ -9,57 +9,47 @@ const Images = [
 export const markers = [
   {
     coordinate: {
-      latitude: 22.6293867,
-      longitude: 88.4354486
+      latitude: -23.574393,
+      longitude: -46.675465
     },
-    title: 'Amazing Food Place',
-    description: 'This is the best food place',
-    image: Images[0].image,
-    rating: 4,
-    reviews: 99
+    address: 'R. Casa do Ator, 275',
+    distance: 'Distance (5km)',
+    image: Images[0].image
   },
   {
     coordinate: {
-      latitude: 22.6345648,
-      longitude: 88.4377279
+      latitude: -23.583513,
+      longitude: -46.674182
     },
-    title: 'Second Amazing Food Place',
-    description: 'This is the second best food place',
-    image: Images[1].image,
-    rating: 5,
-    reviews: 102
+    address: 'R. Gomes de Carvalho, 124',
+    distance: 'Distance (7km)',
+    image: Images[1].image
   },
   {
     coordinate: {
-      latitude: 22.6281662,
-      longitude: 88.4410113
+      latitude: -23.587343,
+      longitude: -46.668902
     },
-    title: 'Third Amazing Food Place',
-    description: 'This is the third best food place',
-    image: Images[2].image,
-    rating: 3,
-    reviews: 220
+    address: 'R. Quatá, 166',
+    distance: 'Distance (10km)',
+    image: Images[2].image
   },
   {
     coordinate: {
-      latitude: 22.6341137,
-      longitude: 88.4497463
+      latitude: -23.592259,
+      longitude: -46.682804
     },
-    title: 'Fourth Amazing Food Place',
-    description: 'This is the fourth best food place',
-    image: Images[3].image,
-    rating: 4,
-    reviews: 48
+    address: 'R. Baluarte, 711',
+    distance: 'Distance (8km)',
+    image: Images[3].image
   },
   {
     coordinate: {
-      latitude: 22.6292757,
-      longitude: 88.444781
+      latitude: -23.600601,
+      longitude: -46.672426
     },
-    title: 'Fifth Amazing Food Place',
-    description: 'This is the fifth best food place',
-    image: Images[4].image,
-    rating: 4,
-    reviews: 178
+    address: 'R. Baluarte, 711',
+    distance: 'Distance (8km)',
+    image: Images[4].image
   }
 ]
