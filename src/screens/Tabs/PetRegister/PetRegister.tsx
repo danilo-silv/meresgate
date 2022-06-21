@@ -1,5 +1,6 @@
-import { FunctionComponent, useEffect, useRef, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 
+import { FontAwesome, MaterialIcons } from '@expo/vector-icons'
 import Layouts from 'layouts'
 import {
   Box,
@@ -16,31 +17,42 @@ import {
 } from 'native-base'
 import { Platform, StyleSheet, TouchableOpacity } from 'react-native'
 import * as ImagePicker from 'expo-image-picker'
+import { RootTabScreenProps } from 'navigation'
+import { useSafeAreaInsets } from 'react-native-safe-area-context'
+
 import { theme } from 'src/theme'
 import { AddDogPhoto, Gallery, RemovePhoto, SheetCamera } from 'assets'
 import { Camera, CameraType } from 'expo-camera'
-import { MaterialIcons } from '@expo/vector-icons'
 import BottomSheet, { BottomSheetView } from '@gorhom/bottom-sheet'
 
-export const PetRegister: FunctionComponent = () => {
+export const PetRegister: RootTabScreenProps<'PetRegister'> = ({ navigation }) => {
   const [isVacinated, setIsVacinated] = useState<boolean>(false)
   const [isRescued, setIsRescued] = useState<boolean>(false)
-  const [isCameraVisible, setIsCameraVisible] = useState<boolean>(false)
-  const [hasPermission, setHasPermission] = useState<any>(null)
-  const [type, setType] = useState<CameraType>(CameraType.back)
-  const [image, setImage] = useState<any>(null)
 
-  const camRef = useRef<any>()
   const sheetRef = useRef<BottomSheet>(null)
   const snapPoints = [1, '35%']
+
+  const safeAreaInsets = useSafeAreaInsets()
+
+  const camRef = useRef<any>()
+
+  const [isCameraVisible, setIsCameraVisible] = useState<boolean>(false)
+
+  const [hasPermission, setHasPermission] = useState<any>(null)
+
+  const [type, setType] = useState<CameraType>(CameraType.back)
+
+  const [image, setImage] = useState<any>(null)
 
   const toggleSwitch = (switchKey: string): void =>
     switchKey === 'vacinated' ? setIsVacinated(!isVacinated) : setIsRescued(!isRescued)
 
   // const goToPetInformation = useCallback(() => navigation.navigate('PetInformation'), [navigation])
 
+  const gotBack = useCallback(() => navigation.goBack(), [navigation])
+
   const pickImageFromGallery = async () => {
-    let result = await ImagePicker.launchImageLibraryAsync({
+    const result = await ImagePicker.launchImageLibraryAsync({
       mediaTypes: ImagePicker.MediaTypeOptions.All,
       allowsEditing: true,
       aspect: [4, 3],
@@ -59,7 +71,6 @@ export const PetRegister: FunctionComponent = () => {
     }
 
     const newPhoto = await camRef.current.takePictureAsync(options)
-    console.log(newPhoto)
 
     setImage(newPhoto.uri)
     setIsCameraVisible(false)
@@ -81,13 +92,31 @@ export const PetRegister: FunctionComponent = () => {
 
   return (
     <>
-      <ScrollView showsVerticalScrollIndicator={false}>
+      <ScrollView showsVerticalScrollIndicator={false} position="relative">
         <Layouts.Internal typeTwo>
+          <View position="absolute" top={-180} left={2}>
+            <TouchableOpacity
+              onPress={gotBack}
+              style={{
+                borderRadius: 50,
+                width: 30,
+                height: 30,
+                justifyContent: 'center',
+                alignItems: 'center'
+              }}>
+              <FontAwesome name="arrow-circle-left" size={30} color={theme.colors.white} />
+            </TouchableOpacity>
+          </View>
           <VStack alignItems="center" justifyContent="center" paddingX={3} paddingBottom={100}>
             {isCameraVisible && (
               <Camera
                 ref={camRef}
-                style={{ width: '100%', height: 540, justifyContent: 'flex-end' }}
+                style={{
+                  flex: 1,
+                  width: '100%',
+                  height: safeAreaInsets.top + 450,
+                  justifyContent: 'flex-end'
+                }}
                 type={type}>
                 <HStack justifyContent="space-around">
                   <TouchableOpacity
