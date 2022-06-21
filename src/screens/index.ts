@@ -38,6 +38,8 @@ export { ResetPasswordSuccessfullyScreen } from './ResetPassword/ResetPasswordSu
 
 export { HomeScreen } from './Tabs/HomeScreen/HomeScreen'
 
+export { ExploreScreen } from './ExploreScreen/ExploreScreen'
+
 export { ProfileScreen } from './Tabs/ProfileScreen/ProfileScreen'
 
 export { PetRegister } from './Tabs/PetRegister/PetRegister'

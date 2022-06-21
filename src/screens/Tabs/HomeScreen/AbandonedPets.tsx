@@ -82,6 +82,8 @@ export const AbandonedPets = ({ navigation }: RootStackScreenProps<'Home'>) => {
 
   const goToPetInformation = useCallback(() => navigation.navigate('PetInformation'), [navigation])
 
+  const goToExplore = useCallback(() => navigation.navigate('Explore'), [navigation])
+
   return (
     <View mt={5}>
       <Text textAlign="justify" fontSize={18} color={theme.colors.primary[900]}>
@@ -138,7 +140,10 @@ export const AbandonedPets = ({ navigation }: RootStackScreenProps<'Home'>) => {
           showsHorizontalScrollIndicator={false}
         />
       </View>
-      <Text my={5}>Mapa</Text>
+
+      <TouchableOpacity onPress={goToExplore} style={{ marginLeft: 10 }}>
+        <Text my={5}>Mapa</Text>
+      </TouchableOpacity>
       <Text fontSize={20} fontWeight="bold" color={theme.colors.primary[900]} my={3}>
         ONGs
       </Text>
