@@ -1,4 +1,5 @@
 import AddDogPhoto from './add-dog-photo.png'
+import AvatarPic from './avatar.png'
 import BlueCamera from './blue-camera.png'
 import BlueHand from './blue-hand.png'
 import BlueLeftPaw from './blue-left-paw.png'
@@ -15,6 +16,7 @@ import DogPhoto from './dog-photo.png'
 import DogImageThree from './dog-three.png'
 import DogImageTwo from './dog-two.png'
 import Dog from './dog.png'
+import EditIcon from './edit.png'
 import Fone from './fone.png'
 import Gallery from './gallery.png'
 import GrayPaw from './gray-paw.png'
@@ -77,5 +79,7 @@ export {
   Photos,
   SheetCamera,
   RemovePhoto,
-  Mapa
+  Mapa,
+  AvatarPic,
+  EditIcon
 }
