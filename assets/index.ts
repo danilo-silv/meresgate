@@ -32,6 +32,10 @@ import WomanAndPet from './woman-and-pet.png'
 import WomanExample from './woman-example.png'
 import YellowPaw from './yellow-paw.png'
 import AddDogPhoto from './add-dog-photo.png'
+import Gallery from './gallery.png'
+import Photos from './photos.png'
+import SheetCamera from './camera.png'
+import RemovePhoto from './remove-photo.png'
 
 export {
   LuizaMellImage,
@@ -67,5 +71,9 @@ export {
   Sued,
   Laura,
   Guilherme,
-  Victoria
+  Victoria,
+  Gallery,
+  Photos,
+  SheetCamera,
+  RemovePhoto
 }
