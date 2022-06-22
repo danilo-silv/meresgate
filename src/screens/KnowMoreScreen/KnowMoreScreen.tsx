@@ -27,7 +27,7 @@ const devs = [
     image: Laura
   },
   {
-    social: 'guilhermeeps',
+    social: '@guilhermeeps',
     image: Guilherme
   },
   {
@@ -97,13 +97,13 @@ export const KnowMoreScreen = ({ navigation }: RootStackScreenProps<'KnowMore'>)
                   source={BluePawCamera}
                 />
                 <Text style={styles.orderedListText}>
-                  1. Clique no ícone exemplificado ao lado para cadastrar um doguinho que encontrou
-                  abandonado
+                  1. Clique no ícone exemplificado ao lado para cadastrar um pet que encontrou
+                  abandonado.
                 </Text>
               </HStack>
               <HStack justifyContent="center" alignItems="center" pt={4}>
                 <Text style={styles.orderedListText}>
-                  2. Clique no ícone ao lado para cadastrar um doguinho que encontrou abandonado
+                  2. Tire uma foto do pet encontrado abandonado.
                 </Text>
                 <Image
                   alt="photographic camera"
@@ -124,12 +124,14 @@ export const KnowMoreScreen = ({ navigation }: RootStackScreenProps<'KnowMore'>)
                   marginRight={2}
                 />
                 <Text style={styles.orderedListText}>
-                  3. Clique no ícone ao lado para cadastrar um doguinho que encontrou abandonado
+                  3. Coloque o máximo de informações sobre o pet, criando consequentemente um perfil
+                  pra ele.
                 </Text>
               </HStack>
               <HStack justifyContent="center" alignItems="center" pt={4}>
                 <Text style={styles.orderedListText}>
-                  4. Clique no ícone ao lado para cadastrar um doguinho que encontrou abandonado
+                  4. Após o perfil criado, uma ONG ou cuidador autônomo pode resgatá-lo com as
+                  informações que você preencheu.
                 </Text>
                 <Image
                   alt="blue hand"
@@ -150,7 +152,8 @@ export const KnowMoreScreen = ({ navigation }: RootStackScreenProps<'KnowMore'>)
                   marginRight={2}
                 />
                 <Text style={styles.orderedListText}>
-                  5. Clique no ícone ao lado para cadastrar um doguinho que encontrou abandonado
+                  5. Pronto! Agora o pet será levado para adoção no sistema dessas instituições ou
+                  já será acolhido por um cuidador autônomo!
                 </Text>
               </HStack>
 
