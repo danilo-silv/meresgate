@@ -14,7 +14,8 @@ import {
   ResetPasswordSendEmailScreen,
   ResetPasswordCreatePasswordScreen,
   ResetPasswordAuthCodeScreen,
-  ResetPasswordSuccessfullyScreen
+  ResetPasswordSuccessfullyScreen,
+  CreateAccountImageScreen
 } from 'src/screens'
 
 import { RootStackScreenComponent } from '.'
@@ -27,6 +28,7 @@ export const noLoggedScreens: Partial<{
   CreateAccountFirstName: CreateAccountFirstNameScreen,
   CreateAccountLastName: CreateAccountLastNameScreen,
   CreateAccountEmail: CreateAccountEmailScreen,
+  CreateAccountImage: CreateAccountImageScreen,
   CreateAccountPhone: CreateAccountPhoneScreen,
   CreateAccountCreatePassword: CreateAccountCreatePasswordScreen,
   CreateAccountAuthCode: CreateAccountAuthCodeScreen,
