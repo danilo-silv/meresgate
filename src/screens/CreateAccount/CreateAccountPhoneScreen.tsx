@@ -22,7 +22,7 @@ export const CreateAccountPhoneScreen: RootStackScreenComponent<'CreateAccountPh
       (data) => {
         Keyboard.dismiss()
 
-        navigation.navigate('CreateAccountCreatePassword', {
+        navigation.navigate('CreateAccountImage', {
           phone_number_cell: MaskService.toRawValue('cel-phone', data.phone_number_cell),
           ...route.params
         })

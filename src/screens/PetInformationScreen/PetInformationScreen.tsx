@@ -1,4 +1,4 @@
-import { FunctionComponent, useCallback } from 'react'
+import { useCallback } from 'react'
 
 import { FontAwesome, FontAwesome5 } from '@expo/vector-icons'
 import { BluePaw, GrayPaw, YellowPaw, DogPaw, Vaccine, Dog, Hand, WomanExample } from 'assets/index'

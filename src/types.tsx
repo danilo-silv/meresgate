@@ -35,6 +35,7 @@ export type RootStackParamList = {
   CreateAccountLastName: Pick<CreateAccountPayload, 'firstName'>
   CreateAccountEmail: Pick<CreateAccountPayload, 'firstName' | 'firstName'>
   CreateAccountPhone: Pick<CreateAccountPayload, 'firstName' | 'email'>
+  CreateAccountImage: Pick<CreateAccountPayload, 'firstName' | 'email' | 'phone_number_cell'>
   CreateAccountCreatePassword: Pick<
     CreateAccountPayload,
     'firstName' | 'email' | 'phone_number_cell'
@@ -55,6 +56,7 @@ export type RootStackParamList = {
   Tabs: undefined
   KnowMore: undefined
   PetInformation: undefined
+  Explore: undefined
 }
 
 export type RootStackScreenProps<Screen extends keyof RootStackParamList> = NativeStackScreenProps<

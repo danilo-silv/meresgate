@@ -20,6 +20,8 @@ export { CreateAccountPhoneScreen } from './CreateAccount/CreateAccountPhoneScre
 
 export { CreateAccountSendEmailConfirmationScreen } from './CreateAccount/CreateAccountSendEmailConfirmationScreen'
 
+export { CreateAccountImageScreen } from './CreateAccount/CreateAccountImageScreen'
+
 export { LoginScreen } from './Login/LoginScreen/LoginScreen'
 
 export { LoginAuthCodeScreen } from './Login/LoginAuthCodeScreen/LoginAuthCodeScreen'
@@ -37,6 +39,8 @@ export { ResetPasswordAuthCodeScreen } from './ResetPassword/ResetPasswordAuthCo
 export { ResetPasswordSuccessfullyScreen } from './ResetPassword/ResetPasswordSuccessfullyScreen'
 
 export { HomeScreen } from './Tabs/HomeScreen/HomeScreen'
+
+export { ExploreScreen } from './ExploreScreen/ExploreScreen'
 
 export { ProfileScreen } from './Tabs/ProfileScreen/ProfileScreen'
 

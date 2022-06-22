@@ -1,4 +1,4 @@
-import { KnowMoreScreen, NotFoundScreen, PetInformationScreen } from 'screens'
+import { ExploreScreen, KnowMoreScreen, NotFoundScreen, PetInformationScreen } from 'screens'
 
 import { RootStackScreenComponent } from '.'
 import { RootStackParamList } from '../types'
@@ -10,5 +10,6 @@ export const loggedScreens: Partial<{
   Tabs: TabStackNavigator,
   KnowMore: KnowMoreScreen,
   NotFound: NotFoundScreen,
+  Explore: ExploreScreen,
   PetInformation: PetInformationScreen
 }
