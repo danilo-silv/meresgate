@@ -26,7 +26,7 @@ export const HomeScreen = (props: RootStackScreenProps<'Home'>) => {
               <Text style={styles.text} color={theme.colors.white}>
                 Animais
               </Text>
-              <Text style={styles.text}>Abandonas</Text>
+              <Text style={styles.text}>Abandonados</Text>
             </Button>
           </View>
           <View>
