@@ -9,9 +9,11 @@ import {
   DogImageThree,
   DogImageTwo,
   LuizaMellImage,
+  Mapa,
   OngSOSImage,
   WomanAndPet
 } from 'assets'
+import { Icons } from 'atoms'
 import { HStack, Image, Text, theme, View, VStack } from 'native-base'
 import { FlatList, TouchableOpacity } from 'react-native'
 import { RootStackScreenProps } from 'src/types'
@@ -141,9 +143,35 @@ export const AbandonedPets = ({ navigation }: RootStackScreenProps<'Home'>) => {
         />
       </View>
 
-      <TouchableOpacity onPress={goToExplore} style={{ marginLeft: 10 }}>
-        <Text my={5}>Mapa</Text>
+      <TouchableOpacity
+        onPress={goToExplore}
+        style={{
+          marginVertical: 30,
+          borderRadius: 17,
+          backgroundColor: '#2B748E',
+          paddingHorizontal: 10,
+          paddingVertical: 10,
+          borderWidth: 1,
+          borderColor: '#2B748E'
+        }}>
+        <HStack alignItems="center" mb={2}>
+          <Icons.MapMarker size={30} />
+
+          <Text
+            color={theme.colors.white}
+            fontSize={16}
+            fontWeight="bold"
+            textAlign="center"
+            ml={1}>
+            Localize Pelo Mapa
+          </Text>
+        </HStack>
+
+        <View alignItems="center">
+          <Image source={Mapa} alt="mapa image" height={180} w={360} borderRadius={17} />
+        </View>
       </TouchableOpacity>
+
       <Text fontSize={20} fontWeight="bold" color={theme.colors.primary[900]} my={3}>
         ONGs
       </Text>

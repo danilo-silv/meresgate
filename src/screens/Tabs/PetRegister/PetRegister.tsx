@@ -1,6 +1,10 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
 
 import { FontAwesome, MaterialIcons } from '@expo/vector-icons'
+import BottomSheet, { BottomSheetView } from '@gorhom/bottom-sheet'
+import { AddDogPhoto, Gallery, RemovePhoto, SheetCamera } from 'assets'
+import { Camera, CameraType } from 'expo-camera'
+import * as ImagePicker from 'expo-image-picker'
 import Layouts from 'layouts'
 import {
   Box,
@@ -15,21 +19,18 @@ import {
   View,
   VStack
 } from 'native-base'
-import { Platform, StyleSheet, TouchableOpacity } from 'react-native'
-import * as ImagePicker from 'expo-image-picker'
 import { RootTabScreenProps } from 'navigation'
+import { Platform, StyleSheet, TouchableOpacity } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
-
 import { theme } from 'src/theme'
-import { AddDogPhoto, Gallery, RemovePhoto, SheetCamera } from 'assets'
-import { Camera, CameraType } from 'expo-camera'
-import BottomSheet, { BottomSheetView } from '@gorhom/bottom-sheet'
 
 export const PetRegister: RootTabScreenProps<'PetRegister'> = ({ navigation }) => {
   const [isVacinated, setIsVacinated] = useState<boolean>(false)
+
   const [isRescued, setIsRescued] = useState<boolean>(false)
 
   const sheetRef = useRef<BottomSheet>(null)
+
   const snapPoints = [1, '35%']
 
   const safeAreaInsets = useSafeAreaInsets()
@@ -73,12 +74,14 @@ export const PetRegister: RootTabScreenProps<'PetRegister'> = ({ navigation }) =
     const newPhoto = await camRef.current.takePictureAsync(options)
 
     setImage(newPhoto.uri)
+
     setIsCameraVisible(false)
   }
 
   useEffect(() => {
     ;(async () => {
       const { status } = await Camera.requestCameraPermissionsAsync()
+
       setHasPermission(status === 'granted')
     })()
   }, [])
@@ -86,6 +89,7 @@ export const PetRegister: RootTabScreenProps<'PetRegister'> = ({ navigation }) =
   if (hasPermission === null) {
     return <View />
   }
+
   if (hasPermission === false) {
     return <Text>No access to camera</Text>
   }
@@ -94,7 +98,7 @@ export const PetRegister: RootTabScreenProps<'PetRegister'> = ({ navigation }) =
     <>
       <ScrollView showsVerticalScrollIndicator={false} position="relative">
         <Layouts.Internal typeTwo>
-          <View position="absolute" top={-180} left={2}>
+          <View position="absolute" top={-90} left={2}>
             <TouchableOpacity
               onPress={gotBack}
               style={{
@@ -154,7 +158,11 @@ export const PetRegister: RootTabScreenProps<'PetRegister'> = ({ navigation }) =
                 source={image ? { uri: image } : AddDogPhoto}
                 alt="dog icon and a camera"
                 mb={3}
-                style={{ width: 125, height: 125, borderRadius: 20 }}
+                style={{
+                  width: image ? 200 : 100,
+                  height: image ? 200 : 100,
+                  borderRadius: image ? 100 : 20
+                }}
               />
             </TouchableOpacity>
             <Text fontSize={15} color={theme.colors.primary[900]} my={2}>
@@ -275,39 +283,52 @@ export const PetRegister: RootTabScreenProps<'PetRegister'> = ({ navigation }) =
       <BottomSheet
         ref={sheetRef}
         snapPoints={snapPoints}
-        enablePanDownToClose={true}
-        backgroundStyle={{ backgroundColor: theme.colors.primary[800] }}
+        enablePanDownToClose
+        backgroundStyle={{ backgroundColor: '#2B748E' }}
         handleIndicatorStyle={{ backgroundColor: '#CCC' }}
         index={0}>
         <BottomSheetView
           style={{
-            backgroundColor: theme.colors.primary[800],
-            height: '100%',
+            backgroundColor: '#2B748E',
             borderTopLeftRadius: 20,
             borderTopRightRadius: 20,
             paddingTop: 25,
             paddingHorizontal: 20
           }}>
-          <HStack justifyContent="space-around">
+          <HStack justifyContent="space-around" alignItems="center">
             <TouchableOpacity
               onPress={() => {
                 setIsCameraVisible(true)
+
                 sheetRef.current?.close()
               }}>
-              <Image alt="camera" source={SheetCamera} />
+              <Image
+                alt="camera"
+                source={SheetCamera}
+                width={75}
+                height={75}
+                resizeMode="contain"
+              />
             </TouchableOpacity>
             <TouchableOpacity
               onPress={() => {
                 pickImageFromGallery()
+
                 sheetRef.current?.close()
               }}>
-              <Image alt="gallery" source={Gallery} />
+              <Image alt="gallery" source={Gallery} width={75} height={75} resizeMode="contain" />
             </TouchableOpacity>
             <TouchableOpacity
               onPress={() => {
                 setImage(null)
               }}>
-              <Image alt="remove photo" source={RemovePhoto} />
+              <Image
+                alt="remove photo"
+                source={RemovePhoto}
+                width={75}
+                height={75}
+                resizeMode="contain"
+              />
             </TouchableOpacity>
           </HStack>
         </BottomSheetView>
