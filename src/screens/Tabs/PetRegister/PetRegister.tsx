@@ -48,7 +48,7 @@ export const PetRegister: RootTabScreenProps<'PetRegister'> = ({ navigation }) =
   const toggleSwitch = (switchKey: string): void =>
     switchKey === 'vacinated' ? setIsVacinated(!isVacinated) : setIsRescued(!isRescued)
 
-  // const goToPetInformation = useCallback(() => navigation.navigate('PetInformation'), [navigation])
+  const goToHome = useCallback(() => navigation.navigate('Home'), [navigation])
 
   const gotBack = useCallback(() => navigation.goBack(), [navigation])
 
@@ -263,7 +263,7 @@ export const PetRegister: RootTabScreenProps<'PetRegister'> = ({ navigation }) =
                 />
               </HStack>
               <TouchableOpacity
-                // onPress={goToPetInformation}
+                onPress={goToHome}
                 style={{
                   marginTop: 50,
                   marginBottom: 40,

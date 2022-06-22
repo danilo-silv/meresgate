@@ -95,4 +95,14 @@ mock.onPatch(`${process.env.API_BASE_URL}v1/users/{id}/confirm-phone-number`).re
   }
 )
 
+mock.onPost(`${process.env.API_BASE_URL}v1/users/reset-password`).reply(
+  200,
+  {
+    message: 'success'
+  },
+  {
+    'x-slt': '000000000'
+  }
+)
+
 export default client

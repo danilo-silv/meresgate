@@ -11,7 +11,7 @@ export const ResetPasswordEmailSentSuccessfullyScreen: RootStackScreenComponent<
     () =>
       navigation.reset({
         index: 0,
-        routes: [{ name: 'Entry' }, { name: 'Login' }]
+        routes: [{ name: 'Login' }, { name: 'Login' }]
       }),
     [navigation]
   )
