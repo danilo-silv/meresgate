@@ -1,16 +1,16 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
 
+import { MaterialIcons } from '@expo/vector-icons'
+import BottomSheet, { BottomSheetView } from '@gorhom/bottom-sheet'
+import { AvatarPic, Gallery, Laura, RemovePhoto, SheetCamera } from 'assets'
+import { Camera, CameraType } from 'expo-camera'
+import * as ImagePicker from 'expo-image-picker'
 import Layouts from 'layouts'
 import { Avatar, Button, Center, HStack, Image, Text, View, VStack } from 'native-base'
 import { RootStackScreenComponent } from 'navigation'
 import { Keyboard, TouchableOpacity } from 'react-native'
-import { AvatarPic, Gallery, Laura, RemovePhoto, SheetCamera } from 'assets'
-import BottomSheet, { BottomSheetView } from '@gorhom/bottom-sheet'
-import { theme } from 'src/theme'
-import { Camera, CameraType } from 'expo-camera'
-import * as ImagePicker from 'expo-image-picker'
-import { MaterialIcons } from '@expo/vector-icons'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
+import { theme } from 'src/theme'
 
 export const CreateAccountImageScreen: RootStackScreenComponent<'CreateAccountImage'> = ({
   navigation,
@@ -27,6 +27,7 @@ export const CreateAccountImageScreen: RootStackScreenComponent<'CreateAccountIm
   const [image, setImage] = useState<any>(null)
 
   const sheetRef = useRef<BottomSheet>(null)
+
   const snapPoints = [1, '27.5%']
 
   const safeAreaInsets = useSafeAreaInsets()
@@ -59,12 +60,14 @@ export const CreateAccountImageScreen: RootStackScreenComponent<'CreateAccountIm
     const newPhoto = await camRef.current.takePictureAsync(options)
 
     setImage(newPhoto.uri)
+
     setIsCameraVisible(false)
   }
 
   useEffect(() => {
     ;(async () => {
       const { status } = await Camera.requestCameraPermissionsAsync()
+
       setHasPermission(status === 'granted')
     })()
   }, [])
@@ -72,6 +75,7 @@ export const CreateAccountImageScreen: RootStackScreenComponent<'CreateAccountIm
   if (hasPermission === null) {
     return <View />
   }
+
   if (hasPermission === false) {
     return <Text>No access to camera</Text>
   }
@@ -149,14 +153,13 @@ export const CreateAccountImageScreen: RootStackScreenComponent<'CreateAccountIm
       <BottomSheet
         ref={sheetRef}
         snapPoints={snapPoints}
-        enablePanDownToClose={true}
-        backgroundStyle={{ backgroundColor: theme.colors.primary[800] }}
+        enablePanDownToClose
+        backgroundStyle={{ backgroundColor: '#2B748E' }}
         handleIndicatorStyle={{ backgroundColor: '#CCC' }}
         index={0}>
         <BottomSheetView
           style={{
-            backgroundColor: theme.colors.primary[800],
-            height: '100%',
+            backgroundColor: '#2B748E',
             borderTopLeftRadius: 20,
             borderTopRightRadius: 20,
             paddingTop: 25,
@@ -166,22 +169,36 @@ export const CreateAccountImageScreen: RootStackScreenComponent<'CreateAccountIm
             <TouchableOpacity
               onPress={() => {
                 setIsCameraVisible(true)
+
                 sheetRef.current?.close()
               }}>
-              <Image alt="camera" source={SheetCamera} />
+              <Image
+                alt="camera"
+                source={SheetCamera}
+                width={75}
+                height={75}
+                resizeMode="contain"
+              />
             </TouchableOpacity>
             <TouchableOpacity
               onPress={() => {
                 pickImageFromGallery()
+
                 sheetRef.current?.close()
               }}>
-              <Image alt="gallery" source={Gallery} />
+              <Image alt="gallery" source={Gallery} width={75} height={75} resizeMode="contain" />
             </TouchableOpacity>
             <TouchableOpacity
               onPress={() => {
                 setImage(null)
               }}>
-              <Image alt="remove photo" source={RemovePhoto} />
+              <Image
+                alt="remove photo"
+                source={RemovePhoto}
+                width={75}
+                height={75}
+                resizeMode="contain"
+              />
             </TouchableOpacity>
           </HStack>
         </BottomSheetView>

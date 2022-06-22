@@ -1,9 +1,9 @@
 import { FunctionComponent, useCallback, useEffect, useRef, useState } from 'react'
 
 import { AntDesign, MaterialIcons } from '@expo/vector-icons'
+import BottomSheet, { BottomSheetView } from '@gorhom/bottom-sheet'
 import {
   AvatarPic,
-  EditIcon,
   Gallery,
   GreyPawUserProfile,
   Laura,
@@ -11,15 +11,14 @@ import {
   RemovePhoto,
   SheetCamera
 } from 'assets'
+import { Camera, CameraType } from 'expo-camera'
+import * as ImagePicker from 'expo-image-picker'
 import Layouts from 'layouts'
 import { Avatar, HStack, Image, ScrollView, Text, View, VStack } from 'native-base'
 import { StyleSheet, TouchableOpacity, Image as RNImage } from 'react-native'
+import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import { useSetAuthAtom } from 'src/store/auth'
 import { theme } from 'src/theme'
-import BottomSheet, { BottomSheetView } from '@gorhom/bottom-sheet'
-import { Camera, CameraType } from 'expo-camera'
-import * as ImagePicker from 'expo-image-picker'
-import { useSafeAreaInsets } from 'react-native-safe-area-context'
 
 type person = {
   name: string
@@ -36,7 +35,9 @@ export const ProfileScreen: FunctionComponent = () => {
   const safeAreaInsets = useSafeAreaInsets()
 
   const camRef = useRef<any>()
+
   const sheetRef = useRef<BottomSheet>(null)
+
   const snapPoints = [1, '35%']
 
   const [image, setImage] = useState<any>(RNImage.resolveAssetSource(Laura).uri)
@@ -76,12 +77,14 @@ export const ProfileScreen: FunctionComponent = () => {
     const newPhoto = await camRef.current.takePictureAsync(options)
 
     setImage(newPhoto.uri)
+
     setIsCameraVisible(false)
   }
 
   useEffect(() => {
     ;(async () => {
       const { status } = await Camera.requestCameraPermissionsAsync()
+
       setHasPermission(status === 'granted')
     })()
   }, [])
@@ -89,6 +92,7 @@ export const ProfileScreen: FunctionComponent = () => {
   if (hasPermission === null) {
     return <View />
   }
+
   if (hasPermission === false) {
     return <Text>No access to camera</Text>
   }
@@ -115,7 +119,7 @@ export const ProfileScreen: FunctionComponent = () => {
                   }}
                 />
               </TouchableOpacity>
-              <Image alt="edit icon" source={EditIcon} right={-335} top={-10} w={7} h={7} />
+
               {isCameraVisible && (
                 <Camera
                   ref={camRef}
@@ -253,7 +257,7 @@ export const ProfileScreen: FunctionComponent = () => {
       <BottomSheet
         ref={sheetRef}
         snapPoints={snapPoints}
-        enablePanDownToClose={true}
+        enablePanDownToClose
         backgroundStyle={{ backgroundColor: theme.colors.primary[800] }}
         handleIndicatorStyle={{ backgroundColor: '#CCC' }}
         index={0}>
@@ -270,6 +274,7 @@ export const ProfileScreen: FunctionComponent = () => {
             <TouchableOpacity
               onPress={() => {
                 setIsCameraVisible(true)
+
                 sheetRef.current?.close()
               }}>
               <Image alt="camera" source={SheetCamera} />
@@ -277,6 +282,7 @@ export const ProfileScreen: FunctionComponent = () => {
             <TouchableOpacity
               onPress={() => {
                 pickImageFromGallery()
+
                 sheetRef.current?.close()
               }}>
               <Image alt="gallery" source={Gallery} />
