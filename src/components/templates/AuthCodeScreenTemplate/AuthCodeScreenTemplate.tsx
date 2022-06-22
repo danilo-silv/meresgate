@@ -48,12 +48,10 @@ export const AuthCodeScreenTemplate: FunctionComponent<AuthCodeScreenTemplatePro
 
   return (
     <Layouts.Internal typeTwo>
+      <Text fontSize={14} color="#2B748E" mt={6} mb={6} bold>
+        Confirme o seu número de contato através da autenticação abaixo:
+      </Text>
       <VStack space={20} alignItems="center" justifyContent="space-around">
-        <Center alignItems="center" justifyContent="center" mt={6} mb={6}>
-          <Text fontSize={14} color="#2B748E" bold>
-            Confirme o seu número de contato através da autenticação abaixo:
-          </Text>
-        </Center>
         <Center w="100%" alignItems="center" justifyContent="center">
           <Controller
             control={control}

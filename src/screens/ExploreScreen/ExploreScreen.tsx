@@ -27,6 +27,8 @@ const SPACING_FOR_CARD_INSET = width * 0.1 - 10
 export const ExploreScreen = ({ navigation }: RootStackScreenProps<'Explore'>) => {
   const gotBack = useCallback(() => navigation.goBack(), [navigation])
 
+  const goToPetInformation = useCallback(() => navigation.navigate('PetInformation'), [navigation])
+
   const regionFrom = (lat: number, lon: number, _distance: number) => {
     const distance = _distance / 2
 
@@ -220,7 +222,7 @@ export const ExploreScreen = ({ navigation }: RootStackScreenProps<'Explore'>) =
 
               <View style={styles.button}>
                 <TouchableOpacity
-                  onPress={() => {}}
+                  onPress={goToPetInformation}
                   style={[
                     styles.signIn,
                     {
